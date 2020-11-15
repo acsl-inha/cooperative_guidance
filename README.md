@@ -14,9 +14,10 @@ code : MATLAB & python
 ### Target Trajectory
 ![Target Flight Angle](https://user-images.githubusercontent.com/55905711/99188873-92bcd980-27a1-11eb-9acf-46bd82e86da2.png)
 
-표적은 Kill Vehicle과 완전히 독립적으로 기동하며, 사용자에 의해 기동 시점 및 수직, 수평방향 기동 각속도를 입력받는 3DOF 모델을 따른다. 시뮬레이션 모듈은 입력된 기동 파라미터를 바탕으로 표적의 기동 명령을 생성하며, 생성된 기동 명령은 1차 동역학 시스템을 거쳐 표적의 기동 각도를 산출한다. 계산된 표적의 수직, 수평방향 기동 각도는 각각 *Flight Path Angle*과 *Heading Angle*에 해당하며, 이를 기반으로 *Wind<sup>[1](#footnote_1)</sup> to NED* 또는 *NED to Wind* 회전변환 행렬을 만들 수 있다. 표적의 속도벡터는 Wind 좌표계의 1축과 일치하므로, 특정 속력으로 기동하는 표적의 속도 및 궤적을 NED 좌표계에서 기술할 수 있다. 
+표적은 Kill Vehicle과 완전히 독립적으로 기동하며, 사용자에 의해 기동 시점 및 수직, 수평방향 기동 각속도를 입력받는 3DOF 모델을 따른다. 시뮬레이션 모듈은 입력된 기동 파라미터를 바탕으로 표적의 기동 명령을 생성하며, 생성된 기동 명령은 1차 동역학 시스템을 거쳐 표적의 기동 각도를 산출한다. 계산된 표적의 수직, 수평방향 기동 각도는 각각 *Flight Path Angle*과 *Heading Angle*에 해당하며, 이를 기반으로 *Wind<sup>[[1]](#footnote_1)</sup> to NED* 또는 *NED to Wind* 회전변환 행렬을 만들 수 있다. 표적의 속도벡터는 Wind 좌표계의 1축과 일치하므로, 특정 속력으로 기동하는 표적의 속도 및 궤적을 NED 좌표계에서 기술할 수 있다. 
 
-<a name="footnote_1">1</a> : Wind 좌표계는 NED 좌표계를 3-2 순서로 Heading Angle, Flight Path Angle만큼 회전한 좌표계로 정의한다.
+---
+*<a name="footnote_1">[1]</a> Wind 좌표계는 NED 좌표계를 3-2 순서로 Heading Angle, Flight Path Angle만큼 회전한 좌표계로 정의한다.*
 
 ### Proportional Navigation Guidance
 ### Kill Vehicle Kinematics and Dynamics
