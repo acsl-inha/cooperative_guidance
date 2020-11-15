@@ -27,4 +27,4 @@ code : MATLAB & python
 ### Kill Vehicle Kinematics and Dynamics
 
 ---
-*<a name="footnote_1">[1]</a> Wind 좌표계는 NED 좌표계를 3-2 순서로 Heading Angle, Flight Path Angle만큼 회전한 좌표계로 정의한다.*
+<a name="footnote_1">[1]</a> Wind 좌표계는 NED 좌표계를 3-2 순서로 Heading Angle, Flight Path Angle만큼 회전한 좌표계로 정의한다.
