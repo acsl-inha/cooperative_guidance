@@ -22,6 +22,7 @@ code : MATLAB & python
 
 ### Proportional Navigation Guidance
 
+비례항법이라고 불리는 유도법은
 ---
 
 ### Kill Vehicle Kinematics and Dynamics
