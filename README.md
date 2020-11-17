@@ -31,14 +31,14 @@ code : MATLAB & python
 
 비례 항법 유도라고 불리는 Proportional Navigation Guidance의 개념을 설명하기 위한 2차원 그림은 위와 같다. Proportional Navigation Guidance는 위 그림에서 나타나는 *line of sight rate*(&lambda; *dot*)이 0이 되도록  Kill Vehicle를 유도하는 방법이며, Kill Vehicle과 target의 이동 경로를 시각화한 삼각형을 *collison triangle* 이라고 한다.<br>
 
-##### 1. 2차원
+##### 1) 2차원
 2차원에서의 Kill Vehicle의 가속도는 다음과 같이 나타낼 수 있다.<br>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;a_m=N\dot{\lambda}V" title="a_m=N\dot{\lambda}V" />
  
 위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도 *a<sub>m*은 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, &lambda; *dot*은 *line of sight rate*, *V*는 *closing velocity*이다.<br>
 
-##### 2. 3차원
+##### 2) 3차원
 3차원에서의 표준 Kill Vehicle 가속도는 다음과 같이 나타낼 수 있다.<br>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=N\vec{V}_r\times\vec{\Omega}" title="\vec{a}_m=N\vec{V}_r\times\vec{\Omega}" />
@@ -49,9 +49,9 @@ code : MATLAB & python
 
 3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
 
-  <img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="240" height="80">
+  <img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="270" height="90">
   
- <img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="240" height="80">
+ <img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="270" height="90">
 
 
 ---
