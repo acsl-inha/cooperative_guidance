@@ -29,24 +29,24 @@ code : MATLAB & python
 ---
 ![proportionalNavigation](https://user-images.githubusercontent.com/70247735/99353931-d79f5800-28e8-11eb-9db1-1e7ccef7077f.png)
 
-비례 항법 유도라고 불리는 Proportional Navigation Guidance의 개념을 설명하기 위한 2차원 그림은 위와 같다. Proportional Navigation Guidance는 위 그림에서 나타나는 *line of sight rate*(람다 dot)이 0이 되도록  Kill Vehicle를 유도하는 방법이며, Kill Vehicle과 target의 이동 경로를 시각화한 삼각형을 *collison triangle* (충돌 삼각형) 이라고 한다.<br>
+비례 항법 유도라고 불리는 Proportional Navigation Guidance의 개념을 설명하기 위한 2차원 그림은 위와 같다. Proportional Navigation Guidance는 위 그림에서 나타나는 *line of sight rate*(&Lambda; *dot*)이 0이 되도록  Kill Vehicle를 유도하는 방법이며, Kill Vehicle과 target의 이동 경로를 시각화한 삼각형을 *collison triangle* 이라고 한다.<br>
 
 ##### 2차원
 2차원에서의 Kill Vehicle의 가속도는 다음과 같이 나타낼 수 있다.<br>
   (수식)<br>
-위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도는 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, ( 람다 dot )은 *line of sight rate*, V는 *closing velocity*이다.<br>
+위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도 *a<sub>m*은 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, &Lambda; *dot*은 *line of sight rate*, *V*는 *closing velocity*이다.<br>
 
 ##### 3차원
 3차원에서의 표준 Kill Vehicle 가속도는 다음과 같이 나타낼 수 있다.<br>
   (수식)<br>
-위 수식에서 *N*는 무차원의 비례상수이고, V는 *Kill Vehicle대한 target 속도*이다. (오메가)는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
+위 수식에서 *N*는 무차원의 비례상수이고, *V*는 *Kill Vehicle대한 target 속도*이다. &Omega;는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
 (로테이션 벡터 수식)<br>
 
 3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
   (수식)<br>
   (수식)
   
-&omega;
+&Omega;
 
 ### Kill Vehicle Kinematics and Dynamics
 
