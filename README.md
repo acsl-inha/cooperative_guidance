@@ -49,9 +49,9 @@ code : MATLAB & python
 
 3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
 
-  <img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="150" height="50">
+  <img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="210" height="70">
   
- <img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="150" height="50">
+ <img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="210" height="70">
 
 
 ---
