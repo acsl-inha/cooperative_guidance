@@ -26,6 +26,7 @@ code : MATLAB & python
 ---
 
 ### Proportional Navigation Guidance
+![PN](https://user-images.githubusercontent.com/70247735/99350492-df0f3300-28e1-11eb-845d-1fd02146328f.png)
 
 비례항법이라고 불리는 유도법은
 ---
