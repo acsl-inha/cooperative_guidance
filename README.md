@@ -34,7 +34,7 @@ code : MATLAB & python
   (수식)
 위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도는 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, ( 람다 dot )은 *line of sight rate*, V는 *closing velocity*이다.
 
-3차원에서의 표준 Kill Vehicle 가속도는 다음과 같이 나타낼 수 있다.
+3차원에서의 표준 Kill Vehicle 가속도는 다음과 같이 나타낼 수 있다.\
   (수식)
 위 수식에서 *N*는 무차원의 비례상수이고, V는 *Kill Vehicle대한 target 속도*이다. (오메가)는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.
 (로테이션 벡터 수식)
