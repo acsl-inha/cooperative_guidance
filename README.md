@@ -40,7 +40,10 @@ code : MATLAB & python
 위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도 *a<sub>m*은 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, &lambda; *dot*은 *line of sight rate*, *V*는 *closing velocity*이다.<br>
 
 ##### 2) 3차원
-3차원에서의 Kill Vehicle 가속도의 기본형은 다음과 같이 나타낼 수 있다.<br>
+
+![3D1](https://user-images.githubusercontent.com/70247735/99416056-ca5f8900-293b-11eb-9e8a-7fd9263ded85.png)
+
+3차원에서의 Proportional Navigation Guidance의 개념을 표현한 그림은 위와 같다. 3차원에서의 Kill Vehicle 가속도의 기본형은 다음과 같이 나타낼 수 있다.<br>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=N\vec{V}_r\times\vec{\Omega}" title="\vec{a}_m=N\vec{V}_r\times\vec{\Omega}" />
   
@@ -50,8 +53,12 @@ code : MATLAB & python
 
 3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R vector*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
 
+![3D2](https://user-images.githubusercontent.com/70247735/99416120-dcd9c280-293b-11eb-91ee-89ce500a8333.png)
+
   <img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="270" height="90">
   
+![3D3](https://user-images.githubusercontent.com/70247735/99416154-e400d080-293b-11eb-9b4f-22d9380bf4fc.png)
+
  <img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="270" height="90">
 
 
