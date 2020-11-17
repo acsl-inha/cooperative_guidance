@@ -46,7 +46,7 @@ code : MATLAB & python
   (수식)<br>
   (수식)
   
-![수식](http://latex.codecogs.com/gif.latex?&omega%3D%5Cfrac%7By%7D%7Bx%7D)
+![수식](http://latex.codecogs.com/gif.latex?&theta;%3D%5Cfrac%7By%7D%7Bx%7D)
 
 ### Kill Vehicle Kinematics and Dynamics
 
