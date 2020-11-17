@@ -1,4 +1,4 @@
-# cooperative_guidance
+# Cooperative Guidance
 Cooperative guidance for multiple kill vehicles
 
 code : MATLAB & python
