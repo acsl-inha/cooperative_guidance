@@ -33,7 +33,7 @@ code : MATLAB & python
 
 ##### 1.2차원
 2차원에서의 Kill Vehicle의 가속도는 다음과 같이 나타낼 수 있다.<br>
-  a<sub>m</sub> = *N<br>
+  <img src="https://latex.codecogs.com/svg.latex?\Large&space;a_m=N\dot{\lambda}V" title="a_m=N\dot{\lambda}V" />  
 위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도 *a<sub>m*은 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, &lambda; *dot*은 *line of sight rate*, *V*는 *closing velocity*이다.<br>
 
 ##### 2.3차원
