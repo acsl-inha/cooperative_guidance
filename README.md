@@ -31,19 +31,19 @@ code : MATLAB & python
 
 ![proportionalNavigation](https://user-images.githubusercontent.com/70247735/99353931-d79f5800-28e8-11eb-9db1-1e7ccef7077f.png)
 
-비례 항법 유도라고 불리는 Proportional Navigation Guidance의 개념을 설명하기 위한 2차원 그림은 위와 같다. Proportional Navigation Guidance는 위 그림에서 나타나는 *line of sight rate*(&lambda; *dot*)이 0이 되도록  Kill Vehicle를 유도하는 방법이며, Kill Vehicle과 target의 이동 경로를 시각화한 삼각형을 *collison triangle* 이라고 한다.<br>
+비례 항법 유도라고 불리는 Proportional Navigation Guidance의 개념을 설명하기 위한 2차원 그림은 위와 같다. Proportional Navigation Guidance는 위 그림에서 나타나는 *line of sight rate*(&lambda; *dot*)이 0이 되도록 *Kill Vehicle*를 유도하는 방법이며, *Kill Vehicle*과 *target*의 이동 경로를 시각화한 삼각형을 *collison triangle* 이라고 한다.<br>
 
-2차원에서의 Kill Vehicle의 가속도는 다음과 같이 나타낼 수 있다.<br>
+2차원에서의 *Kill Vehicle*의 가속도는 다음과 같이 나타낼 수 있다.<br>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;a_m=N\dot{\lambda}V" title="a_m=N\dot{\lambda}V" />
  
-위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도 *a<sub>m*은 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, &lambda; *dot*은 *line of sight rate*, *V*는 *closing velocity*이다.<br>
+위의 수식에서 알 수 있듯이, *Kill Vehicle*의 가속도 *a<sub>m*은 *Kill Vehicle*의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, &lambda; *dot*은 *line of sight rate*, *V*는 *closing velocity*이다.<br>
 
 ##### 2) 3차원
 
-![3D1](https://user-images.githubusercontent.com/70247735/99416056-ca5f8900-293b-11eb-9e8a-7fd9263ded85.png)
+![3D1](https://user-images.githubusercontent.com/70247735/99418544-7c985000-293e-11eb-964b-5349ae2f567a.png)
 
-3차원에서의 Proportional Navigation Guidance의 개념을 표현한 그림은 위와 같다. 3차원에서의 Kill Vehicle 가속도의 기본형은 다음과 같이 나타낼 수 있다.<br>
+3차원에서의 Proportional Navigation Guidance의 개념을 표현한 그림은 위와 같다. 3차원에서의 *Kill Vehicle* 가속도의 기본형은 다음과 같이 나타낼 수 있다.<br>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=N\vec{V}_r\times\vec{\Omega}" title="\vec{a}_m=N\vec{V}_r\times\vec{\Omega}" />
   
@@ -51,13 +51,13 @@ code : MATLAB & python
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{\Omega}={\vec{R}\times\vec{V}_r\over\vec{R}\cdot\vec{R}}" title="\vec{\Omega}={\vec{R}\times\vec{V}_r\over\vec{R}\cdot\vec{R}}" /><br>
 
-3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R vector*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
+3차원에서 *Kill Vehicle*의 가속도는 *Kill Vehicle*의 속도 벡터와 *R vector*(range from *Kill Vehicle* to *target*)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
 
 - *R vector*에 수직인 가속도
 
 <img src="https://user-images.githubusercontent.com/70247735/99416878-a781a480-293c-11eb-9cf9-ca1eb198064f.png" width="500" height="500"><img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="300" height="90">
   
-- 속도 벡터에 수직인 가속도
+- *Kill Vehicle* 속도 벡터에 수직인 가속도
 
  <img src="https://user-images.githubusercontent.com/70247735/99416899-ae101c00-293c-11eb-89fa-fd49a71f3da1.png" width="500" height="500"><img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="300" height="90">
 
