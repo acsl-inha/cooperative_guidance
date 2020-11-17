@@ -26,10 +26,10 @@ code : MATLAB & python
 ---
 
 ### Proportional Navigation Guidance
+---
 ![PN](https://user-images.githubusercontent.com/70247735/99350492-df0f3300-28e1-11eb-845d-1fd02146328f.png)
 
-비례항법이라고 불리는 유도법은
----
+비례 항법 유도라고 불리는 Proportional Navigation Guidance의 개념을 설명하기 위한 그림은 위와 같다. Proportional Navigation Guidance는 위 그림에서 나타나는 시선각의 변화율이 0이 되도록  Kill Vehicle를 유도하는 방법이며, Kill Vehicle과 표적의 이동 경로를 시각화한 삼각형을 collison triangle (충돌 삼각형) 이라고 한다.
 
 ### Kill Vehicle Kinematics and Dynamics
 
