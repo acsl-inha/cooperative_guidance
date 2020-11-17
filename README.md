@@ -41,7 +41,7 @@ code : MATLAB & python
 ##### 2. 3차원
 3차원에서의 표준 Kill Vehicle 가속도는 다음과 같이 나타낼 수 있다.<br>
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=N\vec{V}_r\vec{\Omega}" title="\vec{a}_m=N\vec{V}_r\vec{\Omega}" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=N\vec{V}_r\vec{\Omega}" title="a_m=N\vec{V}_r\vec{\Omega}" />
   
 위 수식에서 *N*는 무차원의 비례상수이고, *V*는 *Kill Vehicle대한 target 속도*이다. &Omega;는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
 
