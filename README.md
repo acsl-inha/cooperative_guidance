@@ -46,10 +46,6 @@ code : MATLAB & python
   (수식)<br>
   (수식)
   
-  $$<br>
-  y = ax + b
-  $$
-
 
 
 ### Kill Vehicle Kinematics and Dynamics
