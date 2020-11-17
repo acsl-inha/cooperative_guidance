@@ -55,6 +55,15 @@ code : MATLAB & python
 \dot{\Omega }
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />  
 
+---
+
 ### Kill Vehicle Kinematics and Dynamics
+![Kill Vehicle Graphics](https://user-images.githubusercontent.com/55905711/99368419-76827f00-28fe-11eb-9936-9bc703d17989.png)
+
+본 과제에서 고려하는 Kill Vehicle은 [RIM-161 Standard Missile 3](https://en.wikipedia.org/wiki/RIM-161_Standard_Missile_3)의 [Kill Vehicle](https://youtu.be/GGvlNufdeL8)과 유사한 형태를 가지고 있다고 가정한다. 동체 전면부에는 표적 포착을 위한 탐색기가 위치하며, 질량중심 주변에 4개의 추력기로 구성된 Divert Control System이, 동체 후면부에 6개의 추력기로 구성된 Attitude Control System이 부착된 형태이다.
+
+![Kill Vehicle Thrusters](https://user-images.githubusercontent.com/55905711/99400646-8adc7100-292a-11eb-82d2-eb7e8344d26e.png)
+
+Kill Vehicle에 부착된 각 추력기들을 위와 같이 나타내었다. 여기서 *D<sub>1</sub>*, *D<sub>2</sub>*, *D<sub>3</sub>*, *D<sub>4</sub>* 와 *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 는 각 DCS 및 ACS 추력기들이 발생시키는 추력울 의미하며, *f<sub>y</sub>*, *f<sub>z</sub>* 는 동체 좌표계의 2축, 3축 방향으로 Kill Vehicle의 질량중심에 작용하는 힘을, 그리고 *l*, *m*, *n* 은 Kill Vehicle의 자세각, 즉 *Roll*, *Pitch*, *Yaw* 를 발생시키기 위한 토크를 나타낸다.
 
 ---
