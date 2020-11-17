@@ -49,9 +49,10 @@ code : MATLAB & python
 
 3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
 
-  <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=-N\left\vert \vec{V}_r \right\vert{\vec{R}\over\left\vert \vec{R}_r \right\vert}\times\vec{\Omega}" title="\vec{a}_m=-N\left\vert \vec{V}_r \right\vert{\vec{R}\over\left\vert \vec{R}_r \right\vert}\times\vec{\Omega}" /><br>
+  ![a1](https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png)
   
-  <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=-N\left\vert \vec{V}_r \right\vert{\vec{V}_m\over\left\vert \vec{V}_m \right\vert}\times\vec{\Omega}" title="\vec{a}_m=-N\left\vert \vec{V}_r \right\vert{\vec{V}_m\over\left\vert \vec{V}_m \right\vert}\times\vec{\Omega}" />
+  ![a2](https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png)
+
 
 ---
 
