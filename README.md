@@ -47,7 +47,7 @@ code : MATLAB & python
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=N\vec{V}_r\times\vec{\Omega}" title="\vec{a}_m=N\vec{V}_r\times\vec{\Omega}" />
   
-위 수식에서 *N*는 무차원의 비례상수이고, *V*는 *Kill Vehicle대한 target 속도*이다. &Omega;는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
+위 수식에서 *N*는 무차원의 비례상수이고, *V*는 *Kill Vehicle대한 target 속도*이다. *&Omega; vector*는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{\Omega}={\vec{R}\times\vec{V}_r\over\vec{R}\cdot\vec{R}}" title="\vec{\Omega}={\vec{R}\times\vec{V}_r\over\vec{R}\cdot\vec{R}}" /><br>
 
@@ -55,11 +55,11 @@ code : MATLAB & python
 
 - *R vector*에 수직인 가속도
 
-<img src="https://user-images.githubusercontent.com/70247735/99416878-a781a480-293c-11eb-9cf9-ca1eb198064f.png" width="500" height="500"><img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="270" height="90">
+<img src="https://user-images.githubusercontent.com/70247735/99416878-a781a480-293c-11eb-9cf9-ca1eb198064f.png" width="500" height="500"><img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="300" height="90">
   
 - 속도 벡터에 수직인 가속도
 
- <img src="https://user-images.githubusercontent.com/70247735/99416899-ae101c00-293c-11eb-89fa-fd49a71f3da1.png" width="500" height="500"><img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="270" height="90">
+ <img src="https://user-images.githubusercontent.com/70247735/99416899-ae101c00-293c-11eb-89fa-fd49a71f3da1.png" width="500" height="500"><img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="300" height="90">
 
 
 ---
