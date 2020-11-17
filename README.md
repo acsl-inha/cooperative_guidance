@@ -46,7 +46,7 @@ code : MATLAB & python
   (수식)<br>
   (수식)
   
-
+![수식](http://latex.codecogs.com/gif.latex?Concentration%3D%5Cfrac%7BTotalTemplate%7D%7BTotalVolume%7D)
 
 ### Kill Vehicle Kinematics and Dynamics
 
