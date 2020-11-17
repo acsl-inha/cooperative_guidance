@@ -49,13 +49,9 @@ code : MATLAB & python
 
 3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
 
-  <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m = -N\left\vert \vec{V}_r \right\vert{\vec{R}\over\left\vert \vec{R}_r \right\vert}\times\vec{\Omega}" title="-N\left\vert \vec{V}_r \right\vert{\vec{R}\over\left\vert \vec{R} \right\vert}\times\vec{\Omega}" /><br>
+  <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=-N\left\vert \vec{V}_r \right\vert{\vec{R}\over\left\vert \vec{R}_r \right\vert}\times\vec{\Omega}" title="\vec{a}_m=-N\left\vert \vec{V}_r \right\vert{\vec{R}\over\left\vert \vec{R}_r \right\vert}\times\vec{\Omega}" /><br>
   
-  <img src="https://latex.codecogs.com/svg.latex?\Large&space;-N\left\vert \vec{V}_r \right\vert{\vec{V}_m\over\left\vert \vec{V}_m \right\vert}\times\vec{\Omega}" title="-N\left\vert \vec{V}_r \right\vert{\vec{V}_m\over\left\vert \vec{V}_m \right\vert}\times\vec{\Omega}" /><br>
-  
-&Omega;
-\dot{\Omega }
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />  
+  <img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=-N\left\vert \vec{V}_r \right\vert{\vec{V}_m\over\left\vert \vec{V}_m \right\vert}\times\vec{\Omega}" title="\vec{a}_m=-N\left\vert \vec{V}_r \right\vert{\vec{V}_m\over\left\vert \vec{V}_m \right\vert}\times\vec{\Omega}" />
 
 ---
 
