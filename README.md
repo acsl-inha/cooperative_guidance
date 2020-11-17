@@ -9,6 +9,7 @@ code : MATLAB & python
 ### Simulator Structure
 ![Simulator Structure](https://user-images.githubusercontent.com/55905711/99349869-56dc5e00-28e0-11eb-934a-3b9e1a718467.png)
 
+
 사용자는 시뮬레이션 시작 전 표적 및 Kill Vehicle의 초기 위치, 진행방향, 속력 등을 입력한다. 시뮬레이션 모듈은 입력받은 초기 파라미터를 기반으로 표적 궤적을 적분하며, Kill Vehicle은 생성된 표적 궤적을 기반으로 [비례항법유도(Proportional Navigation Guidance)](https://en.wikipedia.org/wiki/Proportional_navigation)를 실시, 표적을 향해 기동한다. Kill Vehicle과 표적 간의 접근속도가 양수에서 음수로 변하면 표적이 격추되었다고 가정, 시뮬레이션을 종료하고 궤적 및 속도 데이터를 출력한다. 
 
 ---
@@ -25,31 +26,35 @@ code : MATLAB & python
 ---
 
 ### Proportional Navigation Guidance
+---
 ![proportionalNavigation](https://user-images.githubusercontent.com/70247735/99353931-d79f5800-28e8-11eb-9db1-1e7ccef7077f.png)
 
-비례 항법 유도라고 불리는 Proportional Navigation Guidance의 개념을 설명하기 위한 2차원 그림은 위와 같다. Proportional Navigation Guidance는 위 그림에서 나타나는 *line of sight rate*(람다 dot)이 0이 되도록  Kill Vehicle를 유도하는 방법이며, Kill Vehicle과 target의 이동 경로를 시각화한 삼각형을 *collison triangle* (충돌 삼각형) 이라고 한다. 
-2차원에서의 Kill Vehicle의 가속도는 다음과 같이 나타낼 수 있다.
-  (수식)
-위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도는 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, ( 람다 dot )은 *line of sight rate*, V는 *closing velocity*이다.
+비례 항법 유도라고 불리는 Proportional Navigation Guidance의 개념을 설명하기 위한 2차원 그림은 위와 같다. Proportional Navigation Guidance는 위 그림에서 나타나는 *line of sight rate*(&lambda; *dot*)이 0이 되도록  Kill Vehicle를 유도하는 방법이며, Kill Vehicle과 target의 이동 경로를 시각화한 삼각형을 *collison triangle* 이라고 한다.<br>
 
-3차원에서의 표준 Kill Vehicle 가속도는 다음과 같이 나타낼 수 있다.
-  (수식)
-위 수식에서 *N*는 무차원의 비례상수이고, V는 *Kill Vehicle대한 target 속도*이다. (오메가)는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.
-(로테이션 벡터 수식)
+##### 1. 2차원
+2차원에서의 Kill Vehicle의 가속도는 다음과 같이 나타낼 수 있다.<br>
 
-3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.
-  (수식)
-  (수식)
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;a_m=N\dot{\lambda}V" title="a_m=N\dot{\lambda}V" />
+ 
+위의 수식에서 알 수 있듯이, Kill Vehicle의 가속도 *a<sub>m*은 Kill Vehicle의 순간 속도 벡터에 수직이며, 이때 *N*은 무차원의 비례상수, &lambda; *dot*은 *line of sight rate*, *V*는 *closing velocity*이다.<br>
 
+##### 2. 3차원
+3차원에서의 표준 Kill Vehicle 가속도는 다음과 같이 나타낼 수 있다.<br>
 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{a}_m=N\dot{\lambda}\timesV" title="\vec{a}_m=N\dot{\lambda}\timesV" />
+  
+위 수식에서 *N*는 무차원의 비례상수이고, *V*는 *Kill Vehicle대한 target 속도*이다. &Omega;는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
+
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\vec{\Omega}={\vec{R}\times\vec{V}_r\over\vec{R}\cdot\vec{R}}" title="a_m=N\dot{\lambda}\timesV" /><br>
+
+3차원에서 Kill Vehicle의 가속도는 Kill Vehicle의 속도 벡터와 *R*(range from Kill Vehicle to target)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
+  (수식)<br>
+  (수식)
+  
+&Omega;
+\dot{\Omega }
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />  
 
 ### Kill Vehicle Kinematics and Dynamics
-
----
-
-### Divert Attitude Control System
-![Kill Vehicle Graphics](https://user-images.githubusercontent.com/55905711/99368419-76827f00-28fe-11eb-9936-9bc703d17989.png)
-
-본 과제에서 고려하는 Kill Vehicle은 [RIM-161 SM-3 유도탄](https://en.wikipedia.org/wiki/RIM-161_Standard_Missile_3)의 [Kill Vehicle](https://youtu.be/GGvlNufdeL8)과 유사한 형태를 가지고 있다고 가정한다. 동체 전면부에는 표적 포착을 위한 탐색기가 위치하며, 질량중심 주변에 4개의 추력기로 구성된 Divert Control System이, 동체 후면부에 6개의 추력기로 구성된 Attitude Control System이 부착된 형태이다.
 
 ---
