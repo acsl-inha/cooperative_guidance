@@ -87,12 +87,12 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 상기한 *Linear Equation* 은 다음과 같은 형태로 정리할 수 있다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\vec{y}&=\textbf{A}\vec{x}\end{align*}"/> 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}y&=\textbf{A}x\end{align*}"/> 
 
 여기서
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\vec{y}&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\\vec{x}&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\\textbf{A}&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\\\end{bmatrix}\end{align*}"/>  
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}y&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\x&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\\textbf{A}&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\\\end{bmatrix}\end{align*}"/>  
 
 DACS 추력기와 Kill Vehicle의 동체에 작용하는 힘 및 토크의 관계를 다음과 같은 *Linear Equation* 으로 정리할 수 있다. 우리는 비례항법유도 및 자세제어기에서 연산된 *f<sub>y</sub>*, *f<sub>z</sub>*, *l*, *m*, *n* 을 추종하기 위해 DACS 추력기를 어떻게 작동시켜야 하는지, 즉 매 순간 *D<sub>1</sub>*, *D<sub>2</sub>*, *D<sub>3</sub>*, *D<sub>4</sub>*, *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 의 값을 어떻게 계산할지에 관심이 있다.
 
