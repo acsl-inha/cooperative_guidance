@@ -117,7 +117,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 기존 *least norm problem* 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [*least squared error*](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 [*gradient descent*](https://en.wikipedia.org/wiki/Gradient_descent) 알고리즘을 고려해 보자. *Gradient descent* 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0에 근사하는 정의역을 찾는 것이 목적이다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&x_{temp}=x_k-h_k\nabla_xf(x_k)\\&\text{if~}f(x_{temp})\leq{f(x_k)}\\&~~~~~~x_{k+1}=x_{temp},~h_{k+1}=1.2h_k\\&\text{else}\\&~~~~~~x_{k+1}=x_{k},~h_{k+1}=0.5h_k\\\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&x_{temp}=x_k-h_k\nabla_xf(x_k),\\&\text{if~}f(x_{temp})\leq{f(x_k)}\\&~~~~~~x_{k+1}=x_{temp},~h_{k+1}=1.2h_k\\&\text{else}\\&~~~~~~x_{k+1}=x_{k},~h_{k+1}=0.5h_k\\\end{align*}"/>
 
 여기서 *f(x)* 는 cost function으로, *x* 에 대한 *f(x)* 의 gradient는 다음과 같다.
 
