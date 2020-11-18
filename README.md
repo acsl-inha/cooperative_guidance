@@ -99,7 +99,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}x{\rVert}\\&\text{subject\;to}&&y=\textbf{A}x\end{align*}"/>
 
-우선 위와 같은 형태의 *Least-norm problem* 을 고려하자. 이러한 문제는 아래와 같은 해를 가짐이 알려져 있다.
+우선 위와 같은 형태의 [*Least-norm problem*](https://see.stanford.edu/materials/lsoeldsee263/08-min-norm.pdf) 을 고려하자. 이러한 문제는 아래와 같은 해를 가짐이 알려져 있다.
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}x=\textbf{A}^\dagger{y}\end{align*}"/>    
@@ -109,6 +109,11 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\textbf{A}^\dagger=\textbf{A}^T(\textbf{A}\textbf{A}^T)^{-1}\end{align*}"/>  
 
-행렬 *A* 가 [full rank](https://en.wikipedia.org/wiki/Rank_(linear_algebra))이고, [underdetermined](https://en.wikipedia.org/wiki/Underdetermined_system)한 형태이므로 *A* 의 [Moore-Penrose pseudoinverse matrix](https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse)는 위와 같다. Pseudoinverse matrix를 이용한 해는 DACS 추력기를 최소한으로 사용하도록 작동하지만, 물리적으로 구현이 불가능하다. 해당 해는 실수 전체의 범위를 가지는 반면, 본 연구에서 고려하는 추력기들은 한쪽 방향으로만 추력을 발생시킬 수 있으므로 반대 방향으로의 추력, 즉 음수값을 가지는 추력을 발생시킬 수 없기 때문이다. 
+행렬 *A* 가 [full rank](https://en.wikipedia.org/wiki/Rank_(linear_algebra))이고, [underdetermined](https://en.wikipedia.org/wiki/Underdetermined_system)한 형태이므로 *A* 의 [Moore-Penrose pseudoinverse matrix](https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse)는 위와 같다. Pseudoinverse matrix를 이용한 해는 DACS 추력기를 최소한으로 사용하도록 작동하지만, 물리적으로 구현이 불가능하다. 해당 해는 실수 전체의 범위를 가지는 반면, 현실의 추력기들은 한쪽 방향으로만 추력을 발생시킬 수 있으므로 추력값의 범위가 음이 아닌 값으로 제한되기 때문이다.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}\textbf{A}x-y{\rVert}_2^2\\&\text{subject\;to}&&x\geq0\end{align*}"/>
+
+
 
 ---
