@@ -151,7 +151,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+\gamma{\lVert}x-x_{prev}{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
 
-Least squared error의 형태를 가진 기존 cost function을 확장해 다음과 같은 cost function을 새롭게 정의하였다. 첫 번째 regularizer는 추력 자체의 최소화를, 두 번째 regularizer는 이전 timestep에서 계산된 추력과 현재 계산된 추력의 차이를 최소화하도록, 즉 추력을 시간에 대해 연속적으로 발생시킴을 의미하며, 비례상수 *&lambda;* 와 *&gamma;* 는 각 regularizer들의 가중치에 해당한다.
+Least squared error의 형태를 가진 기존 cost function을 확장해 다음과 같은 cost function을 새롭게 정의하였다. 첫 번째 regularizer는 추력 자체의 최소화를, 두 번째 regularizer는 이전 timestep에서 계산된 추력과 현재 계산된 추력의 차이를 최소화하도록, 즉 추력을 시간에 대해 연속적으로 발생시킬 것을 의미하며, 비례상수 *&lambda;* 와 *&gamma;* 는 각 regularizer들의 가중치에 해당한다.
 
 
 
