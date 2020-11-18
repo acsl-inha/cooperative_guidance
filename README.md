@@ -114,6 +114,11 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}\textbf{A}x-b{\rVert}_2^2\\&\text{subject\;to}&&x\geq0\end{align*}"/>
 
-기존 *least norm problem* 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [*least squared error*](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다.
+기존 *least norm problem* 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [*least squared error*](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 [*gradient descent*](https://en.wikipedia.org/wiki/Gradient_descent) 알고리즘을 고려해 보자. *Gradient descent* 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0에 근사하는 정의역을 찾는 것이 목적이다.
+
+
+
+
+
 
 ---
