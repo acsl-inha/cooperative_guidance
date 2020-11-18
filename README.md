@@ -142,7 +142,17 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 
 ![Projected Gradient Descent](https://user-images.githubusercontent.com/55905711/99521404-b8cbbf00-29d7-11eb-8cf3-13ab5009eaf5.png)
 
-이전 예시와 동일한 조건에 projected gradient descent를 적용하였다. Inequality constraint를 만족하는 *x* 가 적절한 최솟값으로 수렴해 나가는 것을 확인할 수 있다.
+이전 예시와 동일한 조건에 projected gradient descent를 적용하였다. Inequality constraint를 만족하는 *x* 가 적절한 최솟값으로 수렴해 나가는 것을 확인할 수 있다. 또한 추력기가 발생시킬 수 있는 최대 추력이 제한되어 constraint가 확장된 경우에도 해당 알고리즘을 적용할 수 있다.
+
+---
+
+#### Attempt 3 - Projected Gradient Descent with Regularizer
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+\gamma{\lVert}x-x_{prev}{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
+
+기존 least squared error의 형태를 가진 cost function을 확장해 다음과 같은 cost function을 새롭게 정의하였다. 첫 번째 regularizer는 추력 자체의 최소화를, 두 번째 regularizer는 이전 timestep에서 계산된 추력과 현재 계산된 추력의 차이를 최소화하도록, 즉 추력을 시간에 대해 연속적으로 발생시킴을 의미하며, 비례상수 *&lambda;* 와 *&gamma;* 는 각 regularizer들의 가중치에 해당한다.
+
 
 
 
