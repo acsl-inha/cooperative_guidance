@@ -122,6 +122,6 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 여기서 *f(x)* 는 cost function으로, *x* 에 대한 *f(x)* 의 gradient는 다음과 같다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}f(x)={\lVert}\textbf{A}x-\textbf{b}{\rVert}_2^2,~\nabla_xf(x)=2\textbf{A}^T(\textbf{A}x-textbf{b})\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}f(x)={\lVert}\textbf{A}x-\textbf{b}{\rVert}_2^2,~\nabla_xf(x)=2\textbf{A}^T(\textbf{A}x-\textbf{b})\end{align*}"/>
 
 ---
