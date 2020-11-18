@@ -142,7 +142,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 
 ![Projected Gradient Descent](https://user-images.githubusercontent.com/55905711/99521404-b8cbbf00-29d7-11eb-8cf3-13ab5009eaf5.png)
 
-이전 예시와 동일한 조건에 projected gradient descent를 적용하였다. Inequality constraint를 만족하는 *x* 가 적절한 최솟값으로 수렴해 나가는 것을 확인할 수 있다. 또한 추력기가 발생시킬 수 있는 최대 추력이 제한되어 constraint가 확장된 경우에도 해당 알고리즘을 적용할 수 있다.
+이전 예시와 동일한 조건에 projected gradient descent를 적용하였다. Inequality constraint를 만족하는 *x* 가 적절한 최솟값으로 수렴해 나가는 것을 확인할 수 있다. 또한 추력기가 발생시킬 수 있는 최대 추력이 제한되어 feasible set이 제한된 경우에도 해당 알고리즘을 적용할 수 있다.
 
 ---
 
