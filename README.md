@@ -97,9 +97,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 *x* 는 각 추력기가 발생시키는 추력, *y* 는 Kill Vehicle에 작용하는 힘과 토크, *A* 는 상기한 두 물리량 사이의 관계를 나타내는 행렬이다. 비례항법유도 및 자세제어기에서 연산된 *y* 를 추종하기 위해 DACS 추력기를 어떻게 작동시켜야 하는지, 즉 매 순간 *x* 의 값을 어떻게 계산할지가 우리의 관심사이다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}x{\rVert}\end{align*}"/>
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\text{subject\;to}&&y=\textbf{A}x\end{align*}"/>    
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}x{\rVert}\\\text{subject\;to}&&y=\textbf{A}x\end{align*}"/>    
 
 우선 위와 같은 형태의 *Least-norm problem* 을 고려해 볼 수 있으나, 이런 문제는 아래와 같은 해를 가짐이 알려져 있다.
 
