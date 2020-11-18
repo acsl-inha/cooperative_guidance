@@ -84,8 +84,15 @@ Kill Vehicle에 부착된 각 추력기들을 위와 같이 나타내었다. 여
 
 Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추력기들이 동체 후면부에만 존재하므로, 그 위치는 질량중심에서 크게 벗어난 동시에 질량중심 기준에서 비대칭을 이룬다. 따라서 자세제어를 위해 ACS 추력기를 작동시키는 순간 Kill Vehicle은 토크 *l*, *m*, *n* 뿐만 아니라 힘 *f<sub>y</sub>*, *f<sub>z</sub>* 를 동시에 받을 것이다. *f<sub>y</sub>*, *f<sub>z</sub>* 를 기술하는 식에 ACS 추력기에 의한 *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 항이 포함된 것은 이 때문으로, 동체 전면부에 *f<sub>y</sub>*, *f<sub>z</sub>* 를 상쇄할 수 있는 별도의 추력기가 질량중심 기준 대칭점에 존재하지 않는 한 불가피한 문제이다. *l*, *m*, *n* 을 기술하는 식은 상대적으로 간단하나, ACS 추력기들에 의한 추력을 토크로 변환하는 과정에서 설계변수 *a*, *b*, 즉 질량중심과 ACS 추력기들 사이의 거리 정보가 사용되었다.
 
+상기한 *Linear Equation* 은 다음과 같은 형태로 정리할 수 있다.
+
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\vec{y}&=\textbf{A}\vec{x}\\\text{where}\\\vec{y}&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\\vec{x}&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\\textbf{A}&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\\\end{bmatrix}\end{align*}"/>  
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\vec{y}&=\textbf{A}\vec{x}\end{align*}"/> 
+
+여기서
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\vec{y}&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\\vec{x}&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\\textbf{A}&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\\\end{bmatrix}\end{align*}"/>  
 
 DACS 추력기와 Kill Vehicle의 동체에 작용하는 힘 및 토크의 관계를 다음과 같은 *Linear Equation* 으로 정리할 수 있다. 우리는 비례항법유도 및 자세제어기에서 연산된 *f<sub>y</sub>*, *f<sub>z</sub>*, *l*, *m*, *n* 을 추종하기 위해 DACS 추력기를 어떻게 작동시켜야 하는지, 즉 매 순간 *D<sub>1</sub>*, *D<sub>2</sub>*, *D<sub>3</sub>*, *D<sub>4</sub>*, *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 의 값을 어떻게 계산할지에 관심이 있다.
 
