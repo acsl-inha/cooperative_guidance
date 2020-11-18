@@ -17,11 +17,11 @@ code : MATLAB & python
 ### Target Trajectory
 ![Target Flight Angle](https://user-images.githubusercontent.com/55905711/99188873-92bcd980-27a1-11eb-9acf-46bd82e86da2.png)
 
-표적은 Kill Vehicle과 독립적으로 기동하며, 사용자에 의해 기동 시점 및 수직, 수평방향 기동 각속도를 입력받는 3DOF 모델을 따른다. 시뮬레이션 모듈은 입력된 기동 파라미터를 바탕으로 표적의 기동 명령을 생성하며, 생성된 기동 명령은 1차 동역학 시스템을 거쳐 표적의 기동 각도를 산출한다. 계산된 표적의 수직, 수평방향 기동 각도는 각각 *Flight Path Angle*과 *Heading Angle*에 해당한다.
+표적은 Kill Vehicle과 독립적으로 기동하며, 사용자에 의해 기동 시점 및 수직, 수평방향 기동 각속도를 입력받는 3DOF 모델을 따른다. 시뮬레이션 모듈은 입력된 기동 파라미터를 바탕으로 표적의 기동 명령을 생성하며, 생성된 기동 명령은 1차 동역학 시스템을 거쳐 표적의 기동 각도를 산출한다. 계산된 표적의 수직, 수평방향 기동 각도는 각각 Flight Path Angle과 Heading Angle에 해당한다.
 
 ![FPA and Heading](https://user-images.githubusercontent.com/55905711/99349505-85a60480-28df-11eb-87f1-e1f5f402781e.png)
 
-이를 기반으로 표적의 Wind 좌표계를 정의한다. Wind 좌표계는 NED 좌표계를 3축-2축 순서로 Heading Angle, Flight Path Angle만큼 회전한 좌표계로, 비행체의 진행 방향, 즉 속도벡터가 Wind 좌표계의 1축과 일치하게 된다. *Flight Path Angle*과 *Heading Angle*을 이용해 *Wind to NED* 또는 *NED to Wind* 회전변환 행렬을 기술하며, 표적의 속력을 특정한다면 기동하는 표적의 속도 및 궤적을 NED 좌표계에서 나타낼 수 있다. 
+이를 기반으로 표적의 Wind 좌표계를 정의한다. Wind 좌표계는 NED 좌표계를 3축-2축 순서로 Heading Angle, Flight Path Angle만큼 회전한 좌표계로, 비행체의 진행 방향, 즉 속도벡터가 Wind 좌표계의 1축과 일치하게 된다. Flight Path Angle과 Heading Angle을 이용해 Wind to NED 또는 NED to Wind 회전변환 행렬을 기술하며, 표적의 속력을 특정한다면 기동하는 표적의 속도 및 궤적을 NED 좌표계에서 나타낼 수 있다. 
 
 ---
 
@@ -77,14 +77,14 @@ code : MATLAB & python
 
 ![Kill Vehicle Thrusters](https://user-images.githubusercontent.com/55905711/99400646-8adc7100-292a-11eb-82d2-eb7e8344d26e.png)
 
-Kill Vehicle에 부착된 각 추력기들을 위와 같이 나타내었다. 여기서 *D<sub>1</sub>*, *D<sub>2</sub>*, *D<sub>3</sub>*, *D<sub>4</sub>* 와 *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 는 각 DCS 및 ACS 추력기들이 발생시키는 추력울 의미하며, *f<sub>y</sub>*, *f<sub>z</sub>* 는 동체 좌표계의 2축, 3축 방향으로 Kill Vehicle의 질량중심에 작용하는 힘을, 그리고 *l*, *m*, *n* 은 Kill Vehicle의 자세각, 즉 *Roll*, *Pitch*, *Yaw* 를 발생시키기 위한 토크를 나타낸다.
+Kill Vehicle에 부착된 각 추력기들을 위와 같이 나타내었다. 여기서 *D<sub>1</sub>*, *D<sub>2</sub>*, *D<sub>3</sub>*, *D<sub>4</sub>* 와 *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 는 각 DCS 및 ACS 추력기들이 발생시키는 추력울 의미하며, *f<sub>y</sub>*, *f<sub>z</sub>* 는 동체 좌표계의 2축, 3축 방향으로 Kill Vehicle의 질량중심에 작용하는 힘을, 그리고 *l*, *m*, *n* 은 Kill Vehicle의 자세각, 즉 Roll, Pitch, Yaw 를 발생시키기 위한 토크를 나타낸다.
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}f_y&=-D_2+D_4-A_2-A_3+A_5+A_6\\f_z&=D_1-D_3+A_1-A_4\\l&=-bA_2+bA_3-bA_5+bA_6\\m&=aA_1-aA_4\\n&=aA_2+aA_3-aA_5-aA_6\end{align*}" />  
 
 Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추력기들이 동체 후면부에만 존재하므로, 그 위치는 질량중심에서 크게 벗어난 동시에 질량중심 기준에서 비대칭을 이룬다. 따라서 자세제어를 위해 ACS 추력기를 작동시키는 순간 Kill Vehicle은 토크 *l*, *m*, *n* 뿐만 아니라 힘 *f<sub>y</sub>*, *f<sub>z</sub>* 를 동시에 받을 것이다. *f<sub>y</sub>*, *f<sub>z</sub>* 를 기술하는 식에 ACS 추력기에 의한 *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 항이 포함된 것은 이 때문으로, 동체 전면부에 *f<sub>y</sub>*, *f<sub>z</sub>* 를 상쇄할 수 있는 별도의 추력기가 질량중심 기준 대칭점에 존재하지 않는 한 불가피한 문제이다. *l*, *m*, *n* 을 기술하는 식은 상대적으로 간단하나, ACS 추력기들에 의한 추력을 토크로 변환하는 과정에서 설계변수 *a*, *b*, 즉 질량중심과 ACS 추력기들 사이의 거리 정보가 사용되었다.
 
-상기한 *Linear Equation* 은 다음과 같은 형태로 정리할 수 있다.
+상기한 Linear Equation 은 다음과 같은 형태로 정리할 수 있다.
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}b&=Ax\end{align*}"/> 
@@ -103,7 +103,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}x{\rVert}\\&\text{subject~to}&&b=Ax\end{align*}"/>
 
-우선 위와 같은 형태의 [*least norm problem*](https://see.stanford.edu/materials/lsoeldsee263/08-min-norm.pdf) 을 고려하자. 이러한 문제는 아래와 같은 해를 가짐이 알려져 있다.
+우선 위와 같은 형태의 [least norm problem](https://see.stanford.edu/materials/lsoeldsee263/08-min-norm.pdf) 을 고려하자. 이러한 문제는 아래와 같은 해를 가짐이 알려져 있다.
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}x^*=A^\dagger{b}\end{align*}"/>    
@@ -122,7 +122,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
 
-기존 *least norm problem* 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [*least squared error*](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 [*gradient descent*](https://en.wikipedia.org/wiki/Gradient_descent) 알고리즘을 고려해 보자. *Gradient descent* 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0에 근사하는 벡터 *x* 를 찾는 것이 목적이다.
+기존 least norm problem 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [least squared error](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent) 알고리즘을 고려해 보자. Gradient descent 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0으로 수렴하는 벡터 *x* 를 찾는 것이 목적이다.
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&x_{temp}=x_k-h_k\nabla_xf(x_k),\\&\text{if~}f(x_{temp})\leq{f(x_k)}\\&~~~~~~x_{k+1}=x_{temp},~h_{k+1}=1.2h_k\\&\text{else}\\&~~~~~~x_{k+1}=x_{k},~h_{k+1}=0.5h_k\\\end{align*}"/>
@@ -136,7 +136,15 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 
 ![Gradient Descent](https://user-images.githubusercontent.com/55905711/99520611-a43af700-29d6-11eb-99a8-950ba4967123.png)
 
-시각화를 위해 *x* 를 2차원 벡터로 가정한 뒤 임의의 cost function에 대해 gradient descent를 적용하였다. 
+시각화를 위해 *x* 를 2차원 벡터로 가정한 뒤 임의의 cost function에 대해 gradient descent를 적용하였다. 몇 번의 iteration 후 성공적으로 *x* 가 local minimum으로 수렴하는 것을 확인할 수 있다.
+
+이제 inequality constraint를 고려할 차례이다. 위 그림의 붉은 영역은 벡터 *x* 가 존재하면 안 되는 영역, 즉 constraint를 나타낸다. 우리의 feasible set *C* 는 그림 우측 상단의 nonnegative region으로 제한되므로, 매 step에서 구한 *x* 가 *C* 를 벗어나면 *x* 를 *C* 에 대해 projection해 constraint를 충족시킬 것이다.
+
+![Projected Gradient Descent](https://user-images.githubusercontent.com/55905711/99521404-b8cbbf00-29d7-11eb-8cf3-13ab5009eaf5.png)
+
+이전 예시와 동일한 조건에 projected gradient descent를 적용해 보았다. 
+
+
 
 
 ---
