@@ -122,7 +122,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
 
-기존 *least norm problem* 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [*least squared error*](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 [*gradient descent*](https://en.wikipedia.org/wiki/Gradient_descent) 알고리즘을 고려해 보자. *Gradient descent* 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0에 근사하는 정의역을 찾는 것이 목적이다.
+기존 *least norm problem* 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [*least squared error*](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 [*gradient descent*](https://en.wikipedia.org/wiki/Gradient_descent) 알고리즘을 고려해 보자. *Gradient descent* 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0에 근사하는 벡터 *x* 를 찾는 것이 목적이다.
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&x_{temp}=x_k-h_k\nabla_xf(x_k),\\&\text{if~}f(x_{temp})\leq{f(x_k)}\\&~~~~~~x_{k+1}=x_{temp},~h_{k+1}=1.2h_k\\&\text{else}\\&~~~~~~x_{k+1}=x_{k},~h_{k+1}=0.5h_k\\\end{align*}"/>
@@ -132,9 +132,11 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}f(x)={\lVert}Ax-b{\rVert}_2^2,~\nabla_xf(x)=2A^T(Ax-b)\end{align*}"/>
 
-먼저 inequality constraint가 고려되지 않은 경우를 가정하자. 벡터 *x* 의 초기값과 *learning rate h* 를 지정하면 
+먼저 inequality constraint가 고려되지 않은 경우를 가정하자. 벡터 *x* 는 *f(x)* 의 local minimum을 지나치기 전까지 learning rate를 120%씩 증가시키며 하강한다. Local minimum을 지나치면 learning rate를 50%씩 감소시키며 local minimum에 접근한다. Iteration을 충분히 반복했거나 cost function의 gradient가 충분히 0에 가까워졌다고 판단되면 알고리즘을 종료한다.
 
-![Gradient Descent](https://user-images.githubusercontent.com/55905711/99514773-74d4bc00-29cf-11eb-91cc-8e2a89a013e6.png)
+![Gradient Descent](https://user-images.githubusercontent.com/55905711/99520611-a43af700-29d6-11eb-99a8-950ba4967123.png)
+
+시각화를 위해 *x* 를 2차원 벡터로 가정한 뒤 임의의 cost function에 대해 gradient descent를 적용하였다. 
 
 
 ---
