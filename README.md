@@ -87,7 +87,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 상기한 *Linear Equation* 은 다음과 같은 형태로 정리할 수 있다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\textbf{b}&=\textbf{A}x\end{align*}"/> 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\textbf{B}&=\textbf{A}x\end{align*}"/> 
 
 여기서
 
