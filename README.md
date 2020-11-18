@@ -87,22 +87,22 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 상기한 *Linear Equation* 은 다음과 같은 형태로 정리할 수 있다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}y&=\textbf{A}x\end{align*}"/> 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}b&=\textbf{A}x\end{align*}"/> 
 
 여기서
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}x&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\y&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\\textbf{A}&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\\\end{bmatrix}\end{align*}"/>  
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}x&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\b&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\\textbf{A}&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\\\end{bmatrix}\end{align*}"/>  
 
-*x* 는 각 추력기가 발생시키는 추력, *y* 는 Kill Vehicle에 작용하는 힘과 토크, *A* 는 상기한 두 물리량 사이의 관계를 나타내는 행렬이다. 비례항법유도 및 자세제어기에서 연산된 *y* 를 추종하기 위해 DACS 추력기를 어떻게 작동시켜야 하는지, 즉 매 순간 *x* 의 값을 어떻게 계산할지가 우리의 관심사이다.
-
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}x{\rVert}\\&\text{subject\;to}&&y=\textbf{A}x\end{align*}"/>
-
-우선 위와 같은 형태의 [*Least-norm problem*](https://see.stanford.edu/materials/lsoeldsee263/08-min-norm.pdf) 을 고려하자. 이러한 문제는 아래와 같은 해를 가짐이 알려져 있다.
+*x* 는 각 추력기가 발생시키는 추력, *b* 는 Kill Vehicle에 작용하는 힘과 토크, *A* 는 상기한 두 물리량 사이의 관계를 나타내는 행렬이다. 비례항법유도 및 자세제어기에서 연산된 *b* 를 추종하기 위해 DACS 추력기를 어떻게 작동시켜야 하는지, 즉 매 순간 *x* 의 값을 어떻게 계산할지가 우리의 관심사이다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}x=\textbf{A}^\dagger{y}\end{align*}"/>    
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}x{\rVert}\\&\text{subject\;to}&&b=\textbf{A}x\end{align*}"/>
+
+우선 위와 같은 형태의 [*least norm problem*](https://see.stanford.edu/materials/lsoeldsee263/08-min-norm.pdf) 을 고려하자. 이러한 문제는 아래와 같은 해를 가짐이 알려져 있다.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}x^*=\textbf{A}^\dagger{b}\end{align*}"/>    
 
 여기서
 
@@ -112,8 +112,8 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 행렬 *A* 가 [full rank](https://en.wikipedia.org/wiki/Rank_(linear_algebra))이고, [underdetermined](https://en.wikipedia.org/wiki/Underdetermined_system)한 형태이므로 *A* 의 [Moore-Penrose pseudoinverse matrix](https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse)는 위와 같다. Pseudoinverse matrix를 이용한 해는 DACS 추력기를 최소한으로 사용하도록 작동하지만, 물리적으로 구현이 불가능하다. 해당 해는 실수 전체의 범위를 가지는 반면, 현실의 추력기들은 한쪽 방향으로만 추력을 발생시킬 수 있으므로 추력값의 범위가 음이 아닌 값으로 제한되기 때문이다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}\textbf{A}x-y{\rVert}_2^2\\&\text{subject\;to}&&x\geq0\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}\textbf{A}x-b{\rVert}_2^2\\&\text{subject\;to}&&x\geq0\end{align*}"/>
 
-
+기존 *least norm problem* 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [*least squared error*](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다.
 
 ---
