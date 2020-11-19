@@ -4,7 +4,7 @@ Cooperative guidance for multiple kill vehicles
 code : MATLAB & python
 
 ## Simulator with Single Target and Kill Vehicle
-본 시뮬레이션 모듈은 단일 표적 격추를 위해 기동하는 한 대의 Kill Vehicle을 모사한다. 실행시간의 단축을 위해 표적은 3DOF 모델이 적용된 질점으로 가정하며, Kill Vehicle에는 비행체의 병진운동과 강체회전운동을 모사하는 6DOF 모델이 적용되었다.
+본 시뮬레이션 모듈은 단일 표적 격추를 위해 기동하는 한 대의 Kill Vehicle을 모사한다. 실행시간의 단축을 위해 표적은 3DOF 모델이 적용된 질점으로 가정하며, Kill Vehicle에는 비행체의 질점과 자세각 변화를 모사하는 6DOF 모델을 적용되었다.
 
 ### Simulator Structure
 ![Simulator Structure](https://user-images.githubusercontent.com/55905711/99349869-56dc5e00-28e0-11eb-934a-3b9e1a718467.png)
@@ -47,12 +47,12 @@ code : MATLAB & python
 3차원에서의 Proportional Navigation Guidance의 개념을 표현한 그림은 위와 같다. 3차원에서의 *Kill Vehicle* 가속도의 기본형은 다음과 같이 나타낼 수 있다.<br>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\a_m&=N\V_r\times\Omega\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}a_m&=NV_r\times\Omega\end{align*}" />
   
 위 수식에서 *N*는 무차원의 비례상수이고, *V*는 *Kill Vehicle대한 target 속도*이다. *&Omega; vector*는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\Omega&={R\times\V_r\overR\cdotR}\end{align*}"/><br>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\Omega&={R\timesV_r\overR\cdotR}\end{align*}" /><br>
 
 3차원에서 *Kill Vehicle*의 가속도는 *Kill Vehicle*의 속도 벡터와 *R vector*(range from *Kill Vehicle* to *target*)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
 
