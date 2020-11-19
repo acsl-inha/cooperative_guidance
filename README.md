@@ -52,7 +52,7 @@ code : MATLAB & python
 위 수식에서 *N*는 무차원의 비례상수이고, *V*는 *Kill Vehicle대한 target 속도*이다. *&Omega; vector*는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\Omega&={R\timesV_r\overR\cdotR}\end{align*}" /><br>
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}\Omega&=#frac{R\timesV_r}{R\cdotR}\end{align*}" />
 
 3차원에서 *Kill Vehicle*의 가속도는 *Kill Vehicle*의 속도 벡터와 *R vector*(range from *Kill Vehicle* to *target*)에 대해 나타낼 수 있으며, 다음과 같이 나타낼 수 있다.<br>
 
