@@ -47,7 +47,7 @@ code : MATLAB & python
 3차원에서의 Proportional Navigation Guidance의 개념을 표현한 그림은 위와 같다. 3차원에서의 *Kill Vehicle* 가속도의 기본형은 다음과 같이 나타낼 수 있다.<br>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}a_m&=NV_r\times\Omega\end{align*}" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*} a_m&=NV_r\times\Omega \end{align*}" />
   
 위 수식에서 *N*는 무차원의 비례상수이고, *V*는 *Kill Vehicle대한 target 속도*이다. *&Omega; vector*는 *line of sight의 rotation vector*이며, 다음과 같이 나타낼 수 있다.<br>
 
