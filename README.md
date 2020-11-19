@@ -83,19 +83,19 @@ code : MATLAB & python
 Kill Vehicle에 부착된 각 추력기들을 위와 같이 나타내었다. 여기서 *D<sub>1</sub>*, *D<sub>2</sub>*, *D<sub>3</sub>*, *D<sub>4</sub>* 와 *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 는 각 DCS 및 ACS 추력기들이 발생시키는 추력울 의미하며, *f<sub>y</sub>*, *f<sub>z</sub>* 는 동체 좌표계의 2축, 3축 방향으로 Kill Vehicle의 질량중심에 작용하는 힘을, 그리고 *l*, *m*, *n* 은 Kill Vehicle의 자세각, 즉 Roll, Pitch, Yaw 를 발생시키기 위한 토크를 나타낸다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}f_y&=-D_2+D_4-A_2-A_3+A_5+A_6\\f_z&=D_1-D_3+A_1-A_4\\l&=-bA_2+bA_3-bA_5+bA_6\\m&=aA_1-aA_4\\n&=aA_2+aA_3-aA_5-aA_6\end{align*}" />  
+<img src="https://latex.codecogs.com/svg.latex?space;\begin{align*}f_y&=-D_2+D_4-A_2-A_3+A_5+A_6\\f_z&=D_1-D_3+A_1-A_4\\l&=-bA_2+bA_3-bA_5+bA_6\\m&=aA_1-aA_4\\n&=aA_2+aA_3-aA_5-aA_6\end{align*}" />  
 
 Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추력기들이 동체 후면부에만 존재하므로, 그 위치는 질량중심에서 크게 벗어난 동시에 질량중심 기준에서 비대칭을 이룬다. 따라서 자세제어를 위해 ACS 추력기를 작동시키는 순간 Kill Vehicle은 토크 *l*, *m*, *n* 뿐만 아니라 힘 *f<sub>y</sub>*, *f<sub>z</sub>* 를 동시에 받을 것이다. *f<sub>y</sub>*, *f<sub>z</sub>* 를 기술하는 식에 ACS 추력기에 의한 *A<sub>1</sub>*, *A<sub>2</sub>*, *A<sub>3</sub>*, *A<sub>4</sub>*, *A<sub>5</sub>*, *A<sub>6</sub>* 항이 포함된 것은 이 때문으로, 동체 전면부에 *f<sub>y</sub>*, *f<sub>z</sub>* 를 상쇄할 수 있는 별도의 추력기가 질량중심 기준 대칭점에 존재하지 않는 한 불가피한 문제이다. *l*, *m*, *n* 을 기술하는 식은 상대적으로 간단하나, ACS 추력기들에 의한 추력을 토크로 변환하는 과정에서 설계변수 *a*, *b*, 즉 질량중심과 ACS 추력기들 사이의 거리 정보가 사용되었다.
 
 상기한 Linear Equation 은 다음과 같은 형태로 정리할 수 있다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}b&=Ax\end{align*}"/> 
+<img src="https://latex.codecogs.com/svg.latex?space;\begin{align*}b&=Ax\end{align*}"/> 
 
 여기서
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}x&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\b&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\A&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\end{bmatrix}\end{align*}"/>  
+<img src="https://latex.codecogs.com/svg.latex?space;\begin{align*}x&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\b&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\A&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\end{bmatrix}\end{align*}"/>  
 
 *x* 는 각 추력기가 발생시키는 추력, *b* 는 Kill Vehicle에 작용하는 힘과 토크, *A* 는 상기한 두 물리량 사이의 관계를 나타내는 행렬이다. 비례항법유도 및 자세제어기에서 연산된 *b* 를 추종하기 위해 DACS 추력기를 어떻게 작동시켜야 하는지, 즉 매 순간 *x* 의 값을 어떻게 계산할지가 우리의 관심사이다.
 
@@ -104,17 +104,17 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 #### Attempt 1 - Least Norm Problem
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}x{\rVert}\\&\text{subject~to}&&b=Ax\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}x{\rVert}\\&\text{subject~to}&&b=Ax\end{align*}"/>
 
 우선 위와 같은 형태의 [least norm problem](https://see.stanford.edu/materials/lsoeldsee263/08-min-norm.pdf) 을 고려하자. 이러한 문제는 아래와 같은 해를 가짐이 알려져 있다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}x^*=A^\dagger{b}\end{align*}"/>    
+<img src="https://latex.codecogs.com/svg.latex?space;\begin{align*}x^*=A^\dagger{b}\end{align*}"/>    
 
 여기서
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}A^\dagger=A^T(AA^T)^{-1}\end{align*}"/>  
+<img src="https://latex.codecogs.com/svg.latex?space;\begin{align*}A^\dagger=A^T(AA^T)^{-1}\end{align*}"/>  
 
 행렬 *A* 가 [full rank](https://en.wikipedia.org/wiki/Rank_(linear_algebra))이고, [underdetermined](https://en.wikipedia.org/wiki/Underdetermined_system)한 형태이므로 *A* 의 [Moore-Penrose pseudoinverse matrix](https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse)는 위와 같다. Pseudoinverse matrix를 이용한 해는 DACS 추력기를 최소한으로 사용하도록 작동하지만, 물리적으로 구현이 불가능하다. 해당 해는 실수 전체의 범위를 가지는 반면, 현실의 추력기들은 한쪽 방향으로만 추력을 발생시킬 수 있으므로 추력값의 범위가 음이 아닌 값으로 제한되기 때문이다.
 
@@ -123,17 +123,17 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 #### Attempt 2 - Projected Gradient Descent
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
 
 기존 least norm problem 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [least squared error](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent) 알고리즘을 고려하자. Gradient descent 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0으로 수렴하는 벡터 *x* 를 찾는 것이 목적이다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}&x_{temp}=x_k-h_k\nabla_xf(x_k),\\&\text{if~}f(x_{temp})\leq{f(x_k)}\\&~~~~~~x_{k+1}=x_{temp},~h_{k+1}=1.2h_k\\&\text{else}\\&~~~~~~x_{k+1}=x_{k},~h_{k+1}=0.5h_k\\\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}&x_{temp}=x_k-h_k\nabla_xf(x_k),\\&\text{if~}f(x_{temp})\leq{f(x_k)}\\&~~~~~~x_{k+1}=x_{temp},~h_{k+1}=1.2h_k\\&\text{else}\\&~~~~~~x_{k+1}=x_{k},~h_{k+1}=0.5h_k\\\end{align*}"/>
 
 여기서 *h* 는 learning rate, *f(x)* 는 cost function이며, *x* 에 대한 *f(x)* 의 gradient는 *x* 의 변화에 따른 함수 *f(x)* 의 최대 변화율을 나타낸다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}f(x)={\lVert}Ax-b{\rVert}_2^2,~\nabla_xf(x)=2A^T(Ax-b)\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?space;\begin{align*}f(x)={\lVert}Ax-b{\rVert}_2^2,~\nabla_xf(x)=2A^T(Ax-b)\end{align*}"/>
 
 먼저 inequality constraint가 고려되지 않은 경우를 가정하자. 벡터 *x* 는 *f(x)* 의 local minimum을 지나치기 전까지 learning rate를 120%씩 증가시키며 하강한다. Local minimum을 지나치면 learning rate를 50%씩 감소시키며 local minimum에 접근한다. Iteration을 충분히 반복했거나 cost function의 gradient가 충분히 0에 가까워졌다고 판단되면 알고리즘을 종료한다.
 
