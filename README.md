@@ -42,7 +42,7 @@ code : MATLAB & python
 
 ##### 2) 3차원
 
-![3D1](https://user-images.githubusercontent.com/70247735/99418544-7c985000-293e-11eb-964b-5349ae2f567a.png)
+![p1](https://user-images.githubusercontent.com/70247735/99631405-df910080-2a7e-11eb-8183-e886ea3eaac6.png)
 
 3차원에서의 Proportional Navigation Guidance의 개념을 표현한 그림은 위와 같다. 3차원에서의 *Kill Vehicle* 가속도의 기본형은 다음과 같이 나타낼 수 있다.<br>
 
@@ -58,11 +58,11 @@ code : MATLAB & python
 
 - *R vector*에 수직인 가속도
 
-<img src="https://user-images.githubusercontent.com/70247735/99416878-a781a480-293c-11eb-9cf9-ca1eb198064f.png" width="500" height="500"><img src="https://user-images.githubusercontent.com/70247735/99411283-c2e9b100-2936-11eb-8f77-a9abd9869c6b.png" width="300" height="90">
+<img src="https://user-images.githubusercontent.com/70247735/99631389-da33b600-2a7e-11eb-99e1-246a4324c807.png" width="500" height="500"><img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}a_m&=&-N{\vert}V_r{\vert}\frac{R}{{\vert}R{\vert}}{\times}\Omega\end{align*}" />
   
 - *Kill Vehicle* 속도 벡터에 수직인 가속도
 
- <img src="https://user-images.githubusercontent.com/70247735/99416899-ae101c00-293c-11eb-89fa-fd49a71f3da1.png" width="500" height="500"><img src="https://user-images.githubusercontent.com/70247735/99411352-da289e80-2936-11eb-87e6-32407a6dc7ce.png" width="300" height="90">
+ <img src="https://user-images.githubusercontent.com/70247735/99631369-d30ca800-2a7e-11eb-840e-228ef68ca42b.png" width="500" height="500"><img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{align*}a_m&=&-N{\vert}V_r{\vert}\frac{V_m}{{\vert}V_m{\vert}}{\times}\Omega\end{align*}" />
 
 
 ---
