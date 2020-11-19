@@ -4,7 +4,7 @@ Cooperative guidance for multiple kill vehicles
 code : MATLAB & python
 
 ## Simulator with Single Target and Kill Vehicle
-본 시뮬레이션 모듈은 단일 표적 격추를 위해 기동하는 한 대의 Kill Vehicle을 모사한다. 실행시간의 단축을 위해 표적은 3DOF 모델이 적용된 질점으로 가정하며, Kill Vehicle에는 비행체의 질점과 자세각 변화를 모사하는 6DOF 모델을 적용되었다.
+본 시뮬레이션 모듈은 단일 표적 격추를 위해 기동하는 한 대의 Kill Vehicle을 모사한다. 실행시간의 단축을 위해 표적은 3DOF 모델이 적용된 질점으로 가정하며, Kill Vehicle에는 비행체의 질점과 자세각 변화를 모사하는 6DOF 모델이 적용되었다.
 
 ### Simulator Structure
 ![Simulator Structure](https://user-images.githubusercontent.com/55905711/99349869-56dc5e00-28e0-11eb-934a-3b9e1a718467.png)
@@ -145,7 +145,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 
 ![Projected Gradient Descent](https://user-images.githubusercontent.com/55905711/99521404-b8cbbf00-29d7-11eb-8cf3-13ab5009eaf5.png)
 
-이전 예시와 동일한 조건에 projected gradient descent를 적용하였다. Inequality constraint를 만족하는 *x* 가 적절한 최솟값으로 수렴해 나가는 것을 확인할 수 있다. 또한 추력기가 발생시킬 수 있는 최대 추력이 제한되어 feasible set이 제한된 경우에도 해당 알고리즘을 적용할 수 있다.
+동일한 예시에 projected gradient descent를 적용해 보았다. Inequality constraint를 만족하는 *x* 가 적절한 최솟값으로 수렴해 나가는 것을 확인할 수 있다. 마찬가지로, 추력기가 발생시킬 수 있는 최대 추력이 제한된 경우에도 본 알고리즘을 적용해 적절한 최적해를 구할 수 있다.
 
 ---
 
@@ -155,6 +155,14 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+\gamma{\lVert}x-x_{prev}{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
 
 Least squared error의 형태를 가진 기존 cost function을 확장해 다음과 같은 cost function을 새롭게 정의하였다. 첫 번째 regularizer는 추력 자체의 최소화를, 두 번째 regularizer는 이전 timestep에서 계산된 추력과 현재 계산된 추력의 차이를 최소화하도록, 즉 추력을 시간에 대해 연속적으로 발생시킬 것을 의미하며, 비례상수 *&lambda;* 와 *&gamma;* 는 각 regularizer들의 가중치에 해당한다.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+\gamma{\lVert}x-x_{prev}{\rVert}_2^2,~\nabla_xf(x)=2A^T(Ax-b)+2\lambda{x}+2\gamma(x-x_{prev})\end{align*}"/>
+
+새롭게 정의된 cost function의 gradient는 다음과 같다. 
+
+
+
 
 
 
@@ -168,3 +176,6 @@ Kill Vehicle에는 seeker가 달려있다. 이 target을 detect 하는 것을 �
 
 ![sensor1](https://user-images.githubusercontent.com/70247735/99638342-6a76f880-2a89-11eb-93ff-5be779cf730a.png)
 
+
+
+---
