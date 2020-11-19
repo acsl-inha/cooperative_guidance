@@ -161,14 +161,31 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 
 새롭게 정의된 cost function의 gradient는 다음과 같다. 동일한 방법으로 projected gradient descent 알고리즘을 적용해 적절한 추력벡터 *x* 를 구할 수 있지만, 시뮬레이션 모듈에 이를 적용할 경우 실행시간이 상당히 길어지는 문제가 발생했다. 프로그램을 최적화함으로서 실행시간을 어느 정도 단축시킬 수 있지만, 여기서는 추력값 문제 자체를 단순화시키는 방안을 모색해 보았다.
 
-#### Attempt 4 - 
+#### Attempt 4 - Paired Thrusters
 
+![Paired Thrusters](https://user-images.githubusercontent.com/55905711/99669928-184acd00-2ab3-11eb-93db-b488218f8345.png)
 
+음수 추력을 고려하기 위해 10개의 DACS 추력기들을 두 개씩 짝지어 새롭게 정의하자. 서로 대칭인 추력기들을 묶으면 기존 [*D<sub>1</sub>*, *D<sub>3</sub>*] 를 *D&prime;<sub>1</sub>* 로, [*D<sub>2</sub>*, *D<sub>4</sub>*] 를 *D&prime;<sub>2</sub>* 로, [*A<sub>1</sub>*, *A<sub>4</sub>*] 를 *A&prime;<sub>1</sub>* 로, [*A<sub>2</sub>*, *A<sub>6</sub>*] 를 *A&prime;<sub>2</sub>* 로, [*A<sub>3</sub>*, *A<sub>5</sub>*] 를 *A&prime;<sub>3</sub>* 라고 생각할 수 있다. 새롭게 정의된 5개의 추력기들이 동체 좌표계와 동일한 방향으로 추력을 발생시킨다고 가정하자. 예를 들어 *D&prime;<sub>1</sub>* 추력기가 양의 추력을 발생시키면 기존 *D<sub>1</sub>* 추력기가 작동해 Kill Vehicle은 Yaw 축 방향으로 힘을 받고, 음의 추력을 발생시키면 *D<sub>3</sub>* 추력기가 작동하여 Yaw 축의 반대 방향으로 힘을 받을 것이다. 
 
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f_y&=D_2^{'}+A_2^{'}+A_3^{'}\\f_z&=D_1^{'}+A_1^{'}\\l&=bA_2^{'}-bA_3^{'}\\m&=aA_1^{'}\\n&=-aA_2^{'}-aA_3^{'}\end{align*}" />  
 
+이전과 마찬가지로 새롭게 정의한 추력기들을 이용해 Kill Vehicle에 작용하는 힘과 토크를 나타내었다. 이 Linear Equation을 간단하게 정리하면 다음과 같다.
 
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}b&=A^{'}x^{'}\end{align*}"/> 
 
+여기서
 
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x^{'}&=\begin{bmatrix}D_1^{'}&D_2^{'}&A_1^{'}&A_2^{'}&A_3^{'}\end{bmatrix}^T,\\b&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\A^{'}&=\begin{bmatrix}0&1&0&1&1\\1&0&1&0&0\\0&0&0&b&-b\\0&0&a&0&0\\0&0&0&-a&-a\end{bmatrix}\end{align*}"/>  
+
+매우 편리하게도 추력벡터 *x&prime;* 는 힘과 토크 벡터 *b* 와 같은 크기를 가지며, *A&prime;* 또한 nonsingular matrix이다. 따라서 *x&prime;* 는 아래와 같은 해를 가짐을 쉽게 유추할 수 있다.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x^{'}={A^{'}}^{-1}b\end{align*}"/> 
+
+이렇게 구한 추력벡터 *x&prime;* 는 기존 방법으로 구한 해와 매우 유사한 결과를 보여주며, 그 실행시간 역시 현저히 짧다. 하지만 2개의 추력기들을 하나로 묶어 고려하는 특성 상, 모든 추력기들을 개별적으로 제어하는 것이 불가능하다는 한계 역시 가지고 있다.
 
 ---
 
