@@ -26,7 +26,7 @@ code : MATLAB & python
 ---
 
 ### Proportional Navigation Guidance
----
+
 ##### 1) 2차원
 
 ![proportionalNavigation](https://user-images.githubusercontent.com/70247735/99353931-d79f5800-28e8-11eb-9db1-1e7ccef7077f.png)
@@ -161,3 +161,10 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 
 
 ---
+
+### detect target
+
+Kill Vehicle에는 seeker가 달려있다. 이 target을 detect 하는 것을 그림으로 나타내면 아래와 같다.
+
+![sensor1](https://user-images.githubusercontent.com/70247735/99638342-6a76f880-2a89-11eb-93ff-5be779cf730a.png)
+
