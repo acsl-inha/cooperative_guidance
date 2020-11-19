@@ -4,7 +4,7 @@ Cooperative guidance for multiple kill vehicles
 code : MATLAB & python
 
 ## Simulator with Single Target and Kill Vehicle
-본 시뮬레이션 모듈은 단일 표적 격추를 위해 기동하는 한 대의 Kill Vehicle을 모사한다. 실행시간의 단축을 위해 표적은 3DOF 모델이 적용된 질점으로 가정하며, Kill Vehicle에는 비행체의 질점과 자세각 변화를 모사하는 6DOF 모델을 적용되었다.
+본 시뮬레이션 모듈은 단일 표적 격추를 위해 기동하는 한 대의 Kill Vehicle을 모사한다. 실행시간의 단축을 위해 표적은 3DOF 모델이 적용된 질점으로 가정하며, Kill Vehicle에는 비행체의 병진운동과 강체회전운동을 모사하는 6DOF 모델이 적용되었다.
 
 ### Simulator Structure
 ![Simulator Structure](https://user-images.githubusercontent.com/55905711/99349869-56dc5e00-28e0-11eb-934a-3b9e1a718467.png)
