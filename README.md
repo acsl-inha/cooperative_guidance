@@ -208,10 +208,10 @@ Kill Vehicle에는 seeker가 달려있다. 이 target을 detect 하는 것을 �
 
 Body 1 axis to NED
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;Body1&to&NED\begin{bmatrix}Body\\to\\NED\end{bmatrix}\begin{bmatrix}1\\0\\0\end{bmatrix}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{bmatrix}Body\\to\\NED\end{bmatrix}\begin{bmatrix}1\\0\\0\end{bmatrix}"/>
  
 Los to NED
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{bmatrix}Los\\to\\NED\end{bmatrix}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{bmatrix}Los\\to\\NED\end{bmatrix}\begin{bmatrix}1\\0\\0\end{bmatrix}"/>
 
 ---
