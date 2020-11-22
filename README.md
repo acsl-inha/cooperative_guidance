@@ -195,8 +195,12 @@ Kill Vehicle에는 seeker가 달려있다. 이 target을 detect 하는 것을 �
 
 ![sensor1](https://user-images.githubusercontent.com/70247735/99638342-6a76f880-2a89-11eb-93ff-5be779cf730a.png)
 
+Body 1 axis to NED
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{bmatrix}Body\\to\\NED\end{bmatrix}"/>
- <img src="https://latex.codecogs.com/svg.latex?&space;\begin{bmatrix}Los\\to\\NED\end{bmatrix}"/>
+ 
+Los to NED
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{bmatrix}Los\\to\\NED\end{bmatrix}"/>
 
 ---
