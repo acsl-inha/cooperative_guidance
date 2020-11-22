@@ -197,6 +197,12 @@ Kill Vehicle에는 seeker가 달려있다. 이 target을 detect 하는 것을 �
 
 위 그림을 보기 편하게 2차원으로 나타내면 다음과 같이 나타낼 수 있다.
 
+![detect](https://user-images.githubusercontent.com/70247735/99893521-4a7f4900-2cc4-11eb-88b8-ebd401336f5c.png)
+
+<img src="https://latex.codecogs.com/svg.latex?&space;\alpha>\beta&\mbox{Target }\mbox{detected}\\\alpha<\beta&\mbox{Target }\mbox{non-detected}"/>
+
+위의 *&alpha;* 는  Kill Vehicle seeker의 탐색 범위를 나타내는 각이다. 또 *&beta;* 는 Body1 axis를 NED좌표계로 나타낸 축과 LOS를 NED좌표계로 나타낸 축 사이의 각이다. 이때 *&alpha;* 가 *&beta;* 보다 크면 Kill Vehicle seeker가 Target을 탐지하는 것이고, *&alpha;* 가 *&beta;* 보다 작으면 Kill Vehicle seeker가 Target을 탐지하지 못하는 것이다. Body1 axis를 NED좌표계로 나타낸 축과 LOS를 NED좌표계로 나타낸 축은 아래와 같다.
+
 Body 1 axis to NED
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{bmatrix}Body\\to\\NED\end{bmatrix}"/>
