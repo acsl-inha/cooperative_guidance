@@ -215,12 +215,13 @@ Los to NED
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{bmatrix}Los\\to\\NED\end{bmatrix}\begin{bmatrix}1\\0\\0\end{bmatrix}"/>
  
-마지막으로 여러 좌표계에 대한 rotation 행렬은 다음과 같이 나타낼 수 있다.<br>
+마지막으로 여러 좌표계에 대한 rotation 행렬은 다음과 같이 나타낼 수 있다.
 
 1. NED to Body
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;N2B=\begin{bmatrix}1&0&0\\0&\cos\phi&\sin\phi\\0&-\sin\phi&\cos\phi\end{bmatrix}\begin{bmatrix}\cos\theta&0&-\sin\theta\\0&1&0\\\sin\theta&0&\cos\theta\end{bmatrix}\begin{bmatrix}\cos\psi&\sin\psi&0\\-\sin\psi&\cos\psi&0\\0&0&1\end{bmatrix}"/>
-<br>
+
+
 2. Body to NED
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;B2N=\begin{bmatrix}N2B\end{bmatrix}^{-1}=\begin{bmatrix}N2B\end{bmatrix}^\intercal"/>
