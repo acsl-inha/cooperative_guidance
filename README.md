@@ -237,9 +237,9 @@ Los to NED
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;W2B=\begin{bmatrix}N2B\end{bmatrix}\begin{bmatrix}W2N\end{bmatrix}"/>
  
-6. Wind to NED
+6. Body to Wind
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;W2N=\begin{bmatrix}W2B\end{bmatrix}^{-1}=\begin{bmatrix}W2B\end{bmatrix}^\intercal"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;B2W=\begin{bmatrix}W2B\end{bmatrix}^{-1}=\begin{bmatrix}W2B\end{bmatrix}^\intercal"/>
 
 
 ---
