@@ -25,6 +25,10 @@ code : MATLAB & python
 
 ---
 
+### Numerical Integration
+
+---
+
 ### Proportional Navigation Guidance
 
 ##### 1) 2차원
