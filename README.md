@@ -219,24 +219,29 @@ Los to NED
 
 1. NED to Body
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;N2B=\begin{bmatrix}1&0&0\\0&\cos\phi&\sin\phi\\0&-\sin\phi&\cos\phi\end{bmatrix}\begin{bmatrix}\cos\theta&0&-\sin\theta\\0&1&0\\\sin\theta&0&\cos\theta\end{bmatrix}\begin{bmatrix}\cos\psi&\sin\psi&0\\-\sin\psi&\cos\psi&0\\0&0&1\end{bmatrix}"/><br>
+<img src="https://latex.codecogs.com/svg.latex?&space;N2B=\begin{bmatrix}1&0&0\\0&\cos\phi&\sin\phi\\0&-\sin\phi&\cos\phi\end{bmatrix}\begin{bmatrix}\cos\theta&0&-\sin\theta\\0&1&0\\\sin\theta&0&\cos\theta\end{bmatrix}\begin{bmatrix}\cos\psi&\sin\psi&0\\-\sin\psi&\cos\psi&0\\0&0&1\end{bmatrix}"/>
+
 
 2. Body to NED
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;B2N=\begin{bmatrix}N2B\end{bmatrix}^{-1}=\begin{bmatrix}N2B\end{bmatrix}^\intercal"/>
 
+
 3. NED to Wind
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;N2W=\begin{bmatrix}\cos(FPA)&0&-\sin(FPA)\\0&1&0\\\sin(FPA)&0&\cos(FPA)\end{bmatrix}\begin{bmatrix}\cos(HED)&\sin(HED)&0\\-\sin(HED)&\cos(HED)&0\\0&0&1\end{bmatrix}"/>
  
+
 4. Wind to NED
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;W2N=\begin{bmatrix}N2W\end{bmatrix}^{-1}=\begin{bmatrix}N2W\end{bmatrix}^\intercal"/>
 
+
 5. Wind to Body
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;W2B=\begin{bmatrix}N2B\end{bmatrix}\begin{bmatrix}W2N\end{bmatrix}"/>
- 
+
+
 6. Body to Wind
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;B2W=\begin{bmatrix}W2B\end{bmatrix}^{-1}=\begin{bmatrix}W2B\end{bmatrix}^\intercal"/>
