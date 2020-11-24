@@ -174,7 +174,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 Least squared error의 형태를 가진 기존 cost function을 확장해 다음과 같은 cost function을 새롭게 정의하였다. 첫 번째 regularizer는 추력 자체의 최소화를, 두 번째 regularizer는 이전 timestep에서 계산된 추력과 현재 계산된 추력의 차이를 최소화하도록, 즉 추력을 시간에 대해 연속적으로 발생시킬 것을 의미하며, 비례상수 *&lambda;* 와 *&nu;* 는 각 regularizer들의 가중치에 해당한다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+{\nu}{\lVert}x-x_{prev}{\rVert}_2^2,~\nabla_xf(x)=2A^T(Ax-b)+2\lambda{x}+2{\nu}(x-x_{prev})\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+{\nu}{\lVert}x-x_{prev}{\rVert}_2^2,~\nabla_xf(x)=2A^T(Ax-b)+2\lambda{x}+2{\nu}{(x-x_{prev})}\end{align*}"/>
 
 새롭게 정의된 cost function의 gradient는 다음과 같다. 동일한 방법으로 projected gradient descent 알고리즘을 적용해 적절한 추력벡터 *x* 를 구할 수 있지만, 시뮬레이션 모듈에 이를 적용할 경우 실행시간이 상당히 길어지는 문제가 발생했다. 프로그램을 최적화함으로서 실행시간을 어느 정도 단축시킬 수 있지만, 여기서는 추력값 문제 자체를 단순화시키는 방안을 모색해 보았다.
 
