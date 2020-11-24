@@ -9,7 +9,6 @@ code : MATLAB & python
 ### Simulator Structure
 ![Simulator Structure](https://user-images.githubusercontent.com/55905711/99349869-56dc5e00-28e0-11eb-934a-3b9e1a718467.png)
 
-
 사용자는 시뮬레이션 시작 전 표적 및 Kill Vehicle의 초기 위치, 진행방향, 속력 등을 입력한다. 시뮬레이션 모듈은 입력받은 초기 파라미터를 기반으로 표적 궤적을 적분하며, Kill Vehicle은 생성된 표적 궤적을 기반으로 [비례항법유도(Proportional Navigation Guidance)](https://en.wikipedia.org/wiki/Proportional_navigation)를 실시, 표적을 향해 기동한다. Kill Vehicle과 표적 간의 접근속도가 양수에서 음수로 변하면 표적이 격추되었다고 가정, 시뮬레이션을 종료하고 궤적 및 속도 데이터를 출력한다. 
 
 ---
@@ -26,6 +25,20 @@ code : MATLAB & python
 ---
 
 ### Numerical Integration
+Kill Vehicle의 NED 속도, 동체 가속도, 자세각 및 PQR 변화율 적분을 위해 multistep method의 일종인 Adams-Bashforth method를 사용한다.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}y_{n+1}=y_{n}+\Delta{t}\sum_{j=0}^{p}\gamma_j(\dot{y}_n-\dot{y}_{n-1}),~n\geq{p}\end{align*}" />
+
+여기서
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\gamma_j=\begin{cases}1,&\text{if}~j=0.\\\frac{1}{j!}\int_{0}^{1}s(s+1)\dotsi(s+j-1)ds,&\text{otherwise.}\end{cases}\end{align*}" />  
+
+우리는 p=1인 경우를 고려하므로, 수치적분식은 아래와 같다.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}y_{n+1}=y_n+\frac{\Delta{t}}{2}(3\dot{y}_n-\dot{y}_{n-1}),~\gamma_1=\frac{1}{2}\end{align*}" />  
 
 ---
 
