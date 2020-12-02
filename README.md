@@ -216,9 +216,22 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\widetilde{A}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix},~\widetilde{b}=\begin{bmatrix}b\\\mathbf{0}\\\sqrt{\nu}x_{prev}\end{bmatrix}\end{align*}"/>
  
-이며, *I* 는 10x10 단위행렬, *0* 는 10x1 영행렬이다.
+이며, *I* 는 10x10 단위행렬, *0* 는 10x1 영행렬이다. Augmented Lagrangian을 이용해 다시 정리하면
 
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+u_k{\rVert}_2^2\\z_{k+1}&=\Pi_{\mathcal{C}}(x_{k+1}+u_k)\\u_{k+1}&=u_k+x_{k+1}-z_{k+1}\end{align*}"/>
 
+여기서 *C* 는 feasible set, *&Pi;<sub>C</sub>* 는 projection operator이다. *x<sub>k+1</sub>* 을 정리하면
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+u_k{\rVert}_2^2\\&=\underset{x}{\arg\min}~{\lVert}\widehat{A}x-\widehat{b}{\rVert}_2^2\\&=\hat{A}^\dagger\hat{b}\\&=(\hat{A}^T\hat{A})^{-1}\hat{A}^T\hat{b}\end{align*}"/>
+
+이고, 여기서 
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\hat{A}=\begin{bmatrix}\widetilde{A}\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix},~\hat{b}=\begin{bmatrix}\widetilde{b}\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}u_k\end{bmatrix}=\begin{bmatrix}b\\\mathbf{0}\\\sqrt{\nu}x_{prev}\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}u_k\end{bmatrix}\end{align*}"/>
+
+이다. 적절한 iteration 뒤 계산된 *x<sub>k+1</sub>* 가 constraint를 만족시키는 추력값이다.
 
 ---
 
