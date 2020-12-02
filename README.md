@@ -226,7 +226,7 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 여기서 *C* 는 feasible set, *&Pi;<sub>C</sub>* 는 projection operator이다. *x<sub>k+1</sub>* 을 정리하면
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+u_k{\rVert}_2^2\\&=\underset{x}{\arg\min}~{\lVert}\widehat{A}x-\widehat{b}{\rVert}_2^2\\&=\hat{A}^\dagger\hat{b}\\&=(\hat{A}^T\hat{A})^{-1}\hat{A}^T\hat{b}\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+u_k{\rVert}_2^2\\&=\underset{x}{\arg\min}~{\lVert}\hat{A}x-\hat{b}{\rVert}_2^2\\&=\hat{A}^\dagger\hat{b}\\&=(\hat{A}^T\hat{A})^{-1}\hat{A}^T\hat{b}\end{align*}"/>
 
 이고, 여기서 
 
