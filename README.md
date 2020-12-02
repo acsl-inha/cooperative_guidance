@@ -204,6 +204,22 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 
 이렇게 구한 추력벡터 *x&prime;* 는 기존 방법으로 구한 해와 매우 유사한 결과를 보여주며, 그 실행시간 역시 현저히 짧다. 하지만 2개의 추력기들을 하나로 묶어 고려하는 특성 상, 모든 추력기들을 개별적으로 제어하는 것이 불가능하다는 한계 역시 가지고 있다.
 
+#### Extra Attempt - ADMM Solver
+
+기존 Projected Gradient Descent 대신 [ADMM solver](https://web.stanford.edu/~boyd/papers/admm_distr_stats.html)를 적용하자. Cost function *f(x)* 는 아래와 같이 정리할 수 있다.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)&={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+{\nu}{\lVert}x-x_{prev}{\rVert}_2^2\\&={\lVert}Ax-b{\rVert}_2^2+{\lVert}\sqrt{\lambda}x{\rVert}_2^2+{\lVert}\sqrt{{\nu}}x-\sqrt{{\nu}}x_{prev}{\rVert}_2^2\\&={\lVert}\widetilde{A}x-\widetilde{b}{\rVert}_2^2\end{align*}"/> 
+
+여기서
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\widetilde{A}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix},~\widetilde{b}=\begin{bmatrix}b\\\mathbf{0}\\\sqrt{\nu}x_{prev}\end{bmatrix}\end{align*}"/>
+ 
+이며, *I* 는 10x10 단위행렬, *0* 는 10x1 영행렬이다.
+
+
+
 ---
 
 ### detect target
