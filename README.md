@@ -204,6 +204,8 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 
 이렇게 구한 추력벡터 *x&prime;* 는 기존 방법으로 구한 해와 매우 유사한 결과를 보여주며, 그 실행시간 역시 현저히 짧다. 하지만 2개의 추력기들을 하나로 묶어 고려하는 특성 상, 모든 추력기들을 개별적으로 제어하는 것이 불가능하다는 한계 역시 가지고 있다.
 
+---
+
 #### Extra Attempt - ADMM Solver
 
 기존 Projected Gradient Descent 대신 [ADMM solver](https://web.stanford.edu/~boyd/papers/admm_distr_stats.html)를 적용하자. Cost function *f(x)* 는 아래와 같이 정리할 수 있다.
