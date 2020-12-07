@@ -235,6 +235,30 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 
 이다. 적절한 iteration 뒤 계산된 *x<sub>k+1</sub>* 가 constraint를 만족시키는 추력값이다.
 
+
+---
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}&\underset{u}{\text{minimize}}&&{\lVert}{Au-C}{\rVert}_2^2+\lambda{\lVert}{u-u_{prev}}{\rVert}_2^2+{\nu}{\lVert}u{\rVert}_2^2\\&\text{subject~to}&&{0}\leq{u}\leq{100}\end{align*}"/>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}A&=\begin{bmatrix}{1.1}&{1.1}&{1.1}&{1.1}&{1.1}&{1.1}&{1.1}&{1.1}\\-2.75&-1.65&1.65&2.75&2.75&1.65&-1.65&-2.75\\0.275&0.275&0.275&0.275&-0.825&-0.825&-0.825&-0.825\\-0.52&0.52&-0.52&0.52&-0.52&0.52&-0.52&0.52\end{bmatrix}\\u_{prev}&=\begin{bmatrix}(5.99487023)^2\\(5.99994375)^2\\(6.01329572)^2\\(6.01835189)^2\\(3.60602349)^2\\(3.59869167)^2\\(3.5730337)^2\\(3.56562262)^2\end{bmatrix}\\C&=\begin{bmatrix}2.12487147\mathrm{e}{+02}\\1.98773408\mathrm{e}{+00}\\-2.60378204\mathrm{e}{+00}\\-5.77391133\mathrm{e}{-03}\end{bmatrix}\\\end{align*}"/>
+ 
+ <p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(u)&={\lVert}Au-C{\rVert}_2^2+\lambda{\lVert}u-u_{prev}{\rVert}_2^2+{\nu}{\lVert}u{\rVert}_2^2\\&={\lVert}Au-C{\rVert}_2^2+{\lVert}\sqrt{\lambda}u-\sqrt{\lambda}u_{prev}{\rVert}_2^2+{\lVert}\sqrt{{\nu}}u{\rVert}_2^2\\&={\lVert}\widetilde{A}u-\widetilde{C}{\rVert}_2^2\end{align*}"/>
+ 
+ <p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\widetilde{A}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix},~\widetilde{C}=\begin{bmatrix}C\\\sqrt{\lambda}{u_{prev}}\\\mathbf{0}\end{bmatrix}\end{align*}"/>
+ 
+ <p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}u_{k+1}&=\underset{u}{\arg\min}~f(u)+\frac{\rho}{2}{\lVert}u-z_k+r_k{\rVert}_2^2\\z_{k+1}&=\Pi_{\mathcal{C}}({u_{k+1}}+r_k)\\r_{k+1}&=r_k+u_{k+1}-z_{k+1}\end{align*}"/>
+ 
+ <p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}u_{k+1}&=\underset{u}{\arg\min}~f(u)+\frac{\rho}{2}{{\lVert}{u}-{z_k}+{r_k}{\rVert}}_2^2\\&=\underset{u}{\arg\min}~{\lVert}\hat{A}{u}-\hat{C}{\rVert}_2^2\\&=\hat{A}^\dagger\hat{C}\\&=(\hat{A}^T\hat{A})^{-1}\hat{A}^T\hat{C}\end{align*}"/>
+ 
+ <p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\hat{A}=\begin{bmatrix}\widetilde{A}\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix},~\hat{C}=\begin{bmatrix}\widetilde{C}\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}=\begin{bmatrix}C\\\sqrt{\lambda}{u_{prev}}\\\mathbf{0}\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}\end{align*}"/>
+
 ---
 
 ### detect target
