@@ -256,8 +256,21 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
  <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}u_{k+1}&=\underset{u}{\arg\min}~f(u)+\frac{\rho}{2}{{\lVert}{u}-{z_k}+{r_k}{\rVert}}_2^2\\&=\underset{u}{\arg\min}~{\lVert}\hat{A}{u}-\hat{C}{\rVert}_2^2\\&=\hat{A}^\dagger\hat{C}\\&=(\hat{A}^T\hat{A})^{-1}\hat{A}^T\hat{C}\end{align*}"/>
  
- <p align="center">
+<p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\hat{A}=\begin{bmatrix}\widetilde{A}\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix},~\hat{C}=\begin{bmatrix}\widetilde{C}\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}=\begin{bmatrix}C\\\sqrt{\lambda}{u_{prev}}\\\mathbf{0}\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}\end{align*}"/>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}{\lVert}v_k{\rVert}_2\leq\epsilon^{pri}~~\text{and}~~{\lVert}{s_k}{\rVert}_2\leq\epsilon^{dual}\end{align*}"/>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}{v_{k+1}}&={u_{k+1}}-{z_{k+1}},\\{s_{k+1}}&=\rho({z_{k+1}}-{z_k})\end{align*}"/>
+ 
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\epsilon^{pri}&=2\sqrt{2}\epsilon^{abs}+\epsilon^{rel}\text{max}\{\lVert{u_k}\rVert_2,~\lVert{z_k}\rVert_2\},\\\epsilon^{dual}&=2\sqrt{2}\epsilon^{abs}+\epsilon^{rel}\lVert{\rho{r_k}}\rVert_2\end{align*}"/>
+ 
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\epsilon^{abs}>0,~\epsilon^{rel}=10^{-3}~\text{or}~10^{-4}\end{align*}"/>
+
 
 ---
 
