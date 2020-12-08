@@ -178,6 +178,8 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 
 새롭게 정의된 cost function의 gradient는 다음과 같다. 동일한 방법으로 projected gradient descent 알고리즘을 적용해 적절한 추력벡터 *x* 를 구할 수 있지만, 시뮬레이션 모듈에 이를 적용할 경우 실행시간이 상당히 길어지는 문제가 발생했다. 프로그램을 최적화함으로서 실행시간을 어느 정도 단축시킬 수 있지만, 여기서는 추력값 문제 자체를 단순화시키는 방안을 모색해 보았다.
 
+---
+
 #### Attempt 4 - Paired Thrusters
 
 ![Paired Thrusters](https://user-images.githubusercontent.com/55905711/99669928-184acd00-2ab3-11eb-93db-b488218f8345.png)
