@@ -187,7 +187,7 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 음수 추력을 고려하기 위해 10개의 DACS 추력기들을 두 개씩 짝지어 새롭게 정의하자. 서로 대칭인 추력기들을 묶으면 기존 [*D<sub>1</sub>*, *D<sub>3</sub>*] 를 *D&prime;<sub>1</sub>* 로, [*D<sub>2</sub>*, *D<sub>4</sub>*] 를 *D&prime;<sub>2</sub>* 로, [*A<sub>1</sub>*, *A<sub>4</sub>*] 를 *A&prime;<sub>1</sub>* 로, [*A<sub>2</sub>*, *A<sub>6</sub>*] 를 *A&prime;<sub>2</sub>* 로, [*A<sub>3</sub>*, *A<sub>5</sub>*] 를 *A&prime;<sub>3</sub>* 라고 생각할 수 있다. 새롭게 정의된 5개의 추력기들이 동체 좌표계와 동일한 방향으로 추력을 발생시킨다고 가정하자. 예를 들어 *D&prime;<sub>1</sub>* 추력기가 양의 추력을 발생시키면 기존 *D<sub>1</sub>* 추력기가 작동해 Kill Vehicle은 Yaw 축 방향으로 힘을 받고, 음의 추력을 발생시키면 *D<sub>3</sub>* 추력기가 작동하여 Yaw 축의 반대 방향으로 힘을 받을 것이다. 
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f_y&=D_2^{'}+A_2^{'}+A_3^{'}\\f_z&=D_1^{'}+A_1^{'}\\l&=bA_2^{'}-bA_3^{'}\\m&=aA_1^{'}\\n&=-aA_2^{'}-aA_3^{'}\end{align*}" />  
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f_y&=D_2^{'}+A_2^{'}+A_3^{'}\\f_z&=D_1^{'}+A_1^{'}\\l&=bA_2^{'}-bA_3^{'}\\m&=aA_1^{'}\\n&=-aA_2^{'}-aA_3^{'}\end{align*} "/>  
 
 이전과 마찬가지로 새롭게 정의한 추력기들을 이용해 Kill Vehicle에 작용하는 힘과 토크를 나타내었다. 이 Linear Equation을 간단하게 정리하면 다음과 같다.
 
