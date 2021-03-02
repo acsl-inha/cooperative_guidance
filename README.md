@@ -213,60 +213,24 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 기존 Projected Gradient Descent 대신 [ADMM solver](https://web.stanford.edu/~boyd/papers/admm_distr_stats.html)를 적용하자. Cost function *f(x)* 는 아래와 같이 정리할 수 있다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)&={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+{\nu}{\lVert}x-x_{prev}{\rVert}_2^2\\&={\lVert}Ax-b{\rVert}_2^2+{\lVert}\sqrt{\lambda}x{\rVert}_2^2+{\lVert}\sqrt{{\nu}}x-\sqrt{{\nu}}x_{prev}{\rVert}_2^2\\&={\lVert}\widetilde{A}x-\widetilde{b}{\rVert}_2^2\end{align*}"/> 
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)&={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}{x-x_{\text{prev}}}{\rVert}_2^2+{\nu}{\lVert}x{\rVert}_2^2\\&={\lVert}Ax-b{\rVert}_2^2+{\lVert}\sqrt{{\lambda}}x-\sqrt{{\lambda}}x_{\text{prev}}{\rVert}_2^2+{\lVert}\sqrt{\nu}x{\rVert}_2^2\\&=\begin{Vmatrix}\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix}x-\begin{bmatrix}b\\\sqrt{\lambda}x_{\text{prev}}\\0\end{bmatrix}\end{Vmatrix}_2^2\end{align*} "/> 
 
 여기서
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\widetilde{A}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix},~\widetilde{b}=\begin{bmatrix}b\\\mathbf{0}\\\sqrt{\nu}x_{prev}\end{bmatrix}\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\widetilde{A}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix},~\widetilde{b}=\begin{bmatrix}b\\\sqrt{\lambda}x_{\text{prev}}\\0\end{bmatrix}\end{align*} "/>
  
 이며, *I* 는 10x10 단위행렬, *0* 는 10x1 영행렬이다. Augmented Lagrangian을 이용해 다시 정리하면
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+u_k{\rVert}_2^2\\z_{k+1}&=\Pi_{\mathcal{C}}(x_{k+1}+u_k)\\u_{k+1}&=u_k+x_{k+1}-z_{k+1}\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+r_k{\rVert}_2^2\\z_{k+1}&=\Pi_{\mathcal{C}}(x_{k+1}+r_k)\\r_{k+1}&=r_k+x_{k+1}-z_{k+1}\end{align*} "/>
 
 여기서 *C* 는 feasible set, *&Pi;<sub>C</sub>* 는 projection operator이다. *x<sub>k+1</sub>* 을 정리하면
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+u_k{\rVert}_2^2\\&=\underset{x}{\arg\min}~{\lVert}\hat{A}{x}-\hat{b}{\rVert}_2^2\\&=\hat{A}^\dagger\hat{b}\\&=(\hat{A}^T\hat{A})^{-1}\hat{A}^T\hat{b}\end{align*}"/>
-
-이고, 여기서 
-
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\hat{A}=\begin{bmatrix}\widetilde{A}\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix},~\hat{b}=\begin{bmatrix}\widetilde{b}\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}u_k\end{bmatrix}=\begin{bmatrix}b\\\mathbf{0}\\\sqrt{\nu}x_{prev}\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}u_k\end{bmatrix}\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\begin{Vmatrix}{x}-{z_k}+{r_k}\end{Vmatrix}}_2^2\\&=\underset{x}{\arg\min}~\begin{Vmatrix}\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}{x}-\begin{bmatrix}b\\\sqrt{\lambda}{x_{\text{prev}}}\\0\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}\end{Vmatrix}_2^2\\&=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}^\dagger\begin{bmatrix}b\\\sqrt{\lambda}{x_{\text{prev}}}\\0\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}\\&=({A^T}{A}+(\lambda+\nu+\frac{\rho}{2})I)^{-1}(A^Tb+\lambda{x}_{\text{prev}}+\frac{\rho}{2}(z_k-r_k))\end{align*}"/>
 
 이다. 적절한 iteration 뒤 계산된 *x<sub>k+1</sub>* 가 constraint를 만족시키는 추력값이다.
-
-
----
-
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}&\underset{u}{\text{minimize}}&&{\lVert}{Au-c}{\rVert}_2^2+\lambda{\lVert}{u-u^{\text{p}}}{\rVert}_2^2+{\nu}{\lVert}u{\rVert}_2^2\\&\text{subject~to}&&u^{\text{lb}}\le{u}\le{u^{\text{ub}}}\end{align*}"/>
-
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}A&=\begin{bmatrix}{1.1}&{1.1}&{1.1}&{1.1}&{1.1}&{1.1}&{1.1}&{1.1}\\-2.75&-1.65&1.65&2.75&2.75&1.65&-1.65&-2.75\\0.275&0.275&0.275&0.275&-0.825&-0.825&-0.825&-0.825\\-0.52&0.52&-0.52&0.52&-0.52&0.52&-0.52&0.52\end{bmatrix}\\u^{\text{p}}&=\begin{bmatrix}(5.99487023)^2\\(5.99994375)^2\\(6.01329572)^2\\(6.01835189)^2\\(3.60602349)^2\\(3.59869167)^2\\(3.5730337)^2\\(3.56562262)^2\end{bmatrix}\\C&=\begin{bmatrix}2.12487147\mathrm{e}{+02}\\1.98773408\mathrm{e}{+00}\\-2.60378204\mathrm{e}{+00}\\-5.77391133\mathrm{e}{-03}\end{bmatrix}\\\end{align*}"/>
- 
- <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(u)&=\begin{Vmatrix}{Au-c}\end{Vmatrix}_2^2+\lambda\begin{Vmatrix}u-u^{\text{p}}\end{Vmatrix}_2^2+{\nu}\begin{Vmatrix}u\end{Vmatrix}_2^2\\&=\begin{Vmatrix}{Au-c}\end{Vmatrix}_2^2+\begin{Vmatrix}\sqrt{\lambda}u-\sqrt{\lambda}u^{\text{p}}\end{Vmatrix}_2^2+\begin{Vmatrix}\sqrt{{\nu}}u\end{Vmatrix}_2^2\\&=\begin{Vmatrix}\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix}u-\begin{bmatrix}{c}\\\sqrt{\lambda}{u^{\text{p}}}\\0\end{bmatrix}\end{Vmatrix}_2^2\end{align*}"/>
- 
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}u_{k+1}&=\underset{u}{\arg\min}~f(u)+\frac{\rho}{2}{\begin{Vmatrix}{u}-{z_k}+{r_k}\end{Vmatrix}}_2^2\\&=\underset{u}{\arg\min}~\begin{Vmatrix}\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}{u}-\begin{bmatrix}c\\\sqrt{\lambda}{u^{\text{p}}}\\0\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}\end{Vmatrix}_2^2\\&=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}^\dagger\begin{bmatrix}c\\\sqrt{\lambda}{u^{\text{p}}}\\0\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}\\&=({A^T}{A}+(\lambda+\nu+\frac{\rho}{2})I)^{-1}(A^Tc+\lambda{u}^{\text{p}}+\frac{\rho}{2}(z_k-r_k))\end{align*}"/>
-
- <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}z_{k+1}&=\Pi_{\mathcal{C}}({u_{k+1}}+r_k)\\r_{k+1}&=r_k+u_{k+1}-z_{k+1}\end{align*}"/>
-
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}{\lVert}v_k{\rVert}_2\leq\epsilon^{\text{{pri}}}~~\text{and}~~{\lVert}{s_k}{\rVert}_2\leq\epsilon^{\text{{dual}}}\end{align*}"/>
-
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}{v_{k+1}}&={u_{k+1}}-{z_{k+1}},\\{s_{k+1}}&=\rho({z_{k+1}}-{z_k})\end{align*}"/>
- 
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\epsilon^{\text{{pri}}}&=2\sqrt{2}\epsilon^{\text{abs}}+\epsilon^{\text{rel}}\text{max}\{\lVert{u_k}\rVert_2,~\lVert{z_k}\rVert_2\},\\\epsilon^{\text{dual}}&=2\sqrt{2}\epsilon^{\text{abs}}+\epsilon^{\text{rel}}\lVert{\rho{r_k}}\rVert_2\end{align*}"/>
- 
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\epsilon^{\text{abs}}>0,~\epsilon^{\text{rel}}=10^{-3}~\text{or}~10^{-4}\end{align*}"/>
-
 
 ---
 
