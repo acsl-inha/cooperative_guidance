@@ -112,7 +112,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 여기서
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\b&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\A&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\end{bmatrix}\end{align*}"/>  
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x&=\begin{bmatrix}D_1&D_2&D_3&D_4&A_1&A_2&A_3&A_4&A_5&A_6\end{bmatrix}^T,\\b&=\begin{bmatrix}f_y&f_z&l&m&n\end{bmatrix}^T,\\A&=\begin{bmatrix}0&-1&0&1&0&-1&-1&0&1&1\\1&0&-1&0&1&0&0&-1&0&0\\0&0&0&0&0&-b&b&0&-b&b\\0&0&0&0&a&0&0&-a&0&0\\0&0&0&0&0&a&a&0&-a&-a\end{bmatrix}\end{align*} "/>  
 
 *x* 는 각 추력기가 발생시키는 추력, *b* 는 Kill Vehicle에 작용하는 힘과 토크, *A* 는 상기한 두 물리량 사이의 관계를 나타내는 행렬이다. 비례항법유도 및 자세제어기에서 연산된 *b* 를 추종하기 위해 DACS 추력기를 어떻게 작동시켜야 하는지, 즉 매 순간 *x* 의 값을 어떻게 계산할지가 우리의 관심사이다.
 
@@ -169,12 +169,12 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 #### Attempt 3 - Projected Gradient Descent with Regularizer
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+{\nu}{\lVert}x-x_{prev}{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}{Ax-b}{\rVert}_2^2+{\lambda}{\lVert}{x-{x_\text{prev}}}{\rVert}_2^2+{\nu}{\lVert}x{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
 
 Least squared error의 형태를 가진 기존 cost function을 확장해 다음과 같은 cost function을 새롭게 정의하였다. 첫 번째 regularizer는 추력 자체의 최소화를, 두 번째 regularizer는 이전 timestep에서 계산된 추력과 현재 계산된 추력의 차이를 최소화하도록, 즉 추력을 시간에 대해 연속적으로 발생시킬 것을 의미하며, 비례상수 *&lambda;* 와 *&nu;* 는 각 regularizer들의 가중치에 해당한다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}x{\rVert}_2^2+{\nu}{\lVert}x-x_{prev}{\rVert}_2^2,~\nabla_xf(x)=2A^T(Ax-b)+2\lambda{x}+2{\nu}{(x-x_{prev})}\end{align*}"/>
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}{x-x_{\text{prev}}}{\rVert}_2^2+{\nu}{\lVert}x{\rVert}_2^2,~\nabla_xf(x)=2A^T(Ax-b)+2\lambda{(x-{x_{\text{prev}}})}+2{\nu}{x}\end{align*}"/>
 
 새롭게 정의된 cost function의 gradient는 다음과 같다. 동일한 방법으로 projected gradient descent 알고리즘을 적용해 적절한 추력벡터 *x* 를 구할 수 있지만, 시뮬레이션 모듈에 이를 적용할 경우 실행시간이 상당히 길어지는 문제가 발생했다. 프로그램을 최적화함으로서 실행시간을 어느 정도 단축시킬 수 있지만, 여기서는 추력값 문제 자체를 단순화시키는 방안을 모색해 보았다.
 
