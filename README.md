@@ -215,7 +215,7 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)&={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}{x-x_{\text{prev}}}{\rVert}_2^2+{\nu}{\lVert}x{\rVert}_2^2\\&={\lVert}Ax-b{\rVert}_2^2+{\lVert}\sqrt{{\lambda}}x-\sqrt{{\lambda}}x_{\text{prev}}{\rVert}_2^2+{\lVert}\sqrt{\nu}x{\rVert}_2^2\\&=\begin{Vmatrix}\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix}x-\begin{bmatrix}b\\\sqrt{\lambda}x_{\text{prev}}\\0\end{bmatrix}\end{Vmatrix}_2^2\end{align*} "/> 
 
-여기서 *I* 는 10x10 단위행렬, *0* 는 10x1 영행렬이다. Augmented Lagrangian을 이용해 다시 정리하면
+여기서 *I* 는 10x10 단위행렬, *0* 는 10x1 영행렬이다. Augmented Lagrangian paramter *&rho;* 를 이용해 다시 정리하면
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+r_k{\rVert}_2^2\\z_{k+1}&=\Pi_{\mathcal{C}}(x_{k+1}+r_k)\\r_{k+1}&=r_k+x_{k+1}-z_{k+1}\end{align*} "/>
@@ -226,6 +226,11 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\begin{Vmatrix}{x}-{z_k}+{r_k}\end{Vmatrix}}_2^2\\&=\underset{x}{\arg\min}~\begin{Vmatrix}\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}{x}-\begin{bmatrix}b\\\sqrt{\lambda}{x_{\text{prev}}}\\0\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}\end{Vmatrix}_2^2\\&=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\\\sqrt{\frac{\rho}{2}}I\end{bmatrix}^\dagger\begin{bmatrix}b\\\sqrt{\lambda}{x_{\text{prev}}}\\0\\\sqrt{\frac{\rho}{2}}z_k-\sqrt{\frac{\rho}{2}}r_k\end{bmatrix}\\&=({A^T}{A}+(\lambda+\nu+\frac{\rho}{2})I)^{-1}(A^Tb+\lambda{x}_{\text{prev}}+\frac{\rho}{2}(z_k-r_k))\end{align*}"/>
 
 이다. 적절한 iteration 뒤 계산된 *x<sub>k+1</sub>* 가 constraint를 만족시키는 추력값이다.
+
+![ADMM Convergence](https://user-images.githubusercontent.com/55905711/109617850-3a57ef00-7b7a-11eb-90d6-5f44b72f7d5b.png)
+
+위 그래프는 임의의 시점에 대해 *&rho;* 를 변화시키며 *f(x)* 의 수렴성을 검증한 결과이다. *&rho;* 값을 작게 설정한 경우, 약 10번 가량 알고리듬을 반복해 최적 DACS 추력값 *x* 를 얻을 수 있음을 확인할 수 있다.
+
 
 ---
 
