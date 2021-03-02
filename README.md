@@ -215,12 +215,7 @@ Least squared error의 형태를 가진 기존 cost function을 확장해 다음
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}f(x)&={\lVert}Ax-b{\rVert}_2^2+\lambda{\lVert}{x-x_{\text{prev}}}{\rVert}_2^2+{\nu}{\lVert}x{\rVert}_2^2\\&={\lVert}Ax-b{\rVert}_2^2+{\lVert}\sqrt{{\lambda}}x-\sqrt{{\lambda}}x_{\text{prev}}{\rVert}_2^2+{\lVert}\sqrt{\nu}x{\rVert}_2^2\\&=\begin{Vmatrix}\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix}x-\begin{bmatrix}b\\\sqrt{\lambda}x_{\text{prev}}\\0\end{bmatrix}\end{Vmatrix}_2^2\end{align*} "/> 
 
-여기서
-
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\widetilde{A}=\begin{bmatrix}A\\\sqrt{\lambda}I\\\sqrt{\nu}I\end{bmatrix},~\widetilde{b}=\begin{bmatrix}b\\\sqrt{\lambda}x_{\text{prev}}\\0\end{bmatrix}\end{align*} "/>
- 
-이며, *I* 는 10x10 단위행렬, *0* 는 10x1 영행렬이다. Augmented Lagrangian을 이용해 다시 정리하면
+여기서 *I* 는 10x10 단위행렬, *0* 는 10x1 영행렬이다. Augmented Lagrangian을 이용해 다시 정리하면
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}x_{k+1}&=\underset{x}{\arg\min}~f(x)+\frac{\rho}{2}{\lVert}x-z_k+r_k{\rVert}_2^2\\z_{k+1}&=\Pi_{\mathcal{C}}(x_{k+1}+r_k)\\r_{k+1}&=r_k+x_{k+1}-z_{k+1}\end{align*} "/>
