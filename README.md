@@ -9,7 +9,7 @@ code : MATLAB & python
 ### Simulator Structure
 ![Simulator Structure](https://user-images.githubusercontent.com/55905711/99349869-56dc5e00-28e0-11eb-934a-3b9e1a718467.png)
 
-사용자는 시뮬레이션 시작 전 표적 및 Kill Vehicle의 초기 위치, 진행방향, 속력 등을 입력한다. 시뮬레이션 모듈은 입력받은 초기 파라미터를 기반으로 표적 궤적을 적분하며, Kill Vehicle은 생성된 표적 궤적을 기반으로 [비례항법유도(Proportional Navigation Guidance)](https://en.wikipedia.org/wiki/Proportional_navigation)를 실시, 표적을 향해 기동한다. Kill Vehicle과 표적 간의 접근속도가 양수에서 음수로 변하면 표적이 격추되었다고 가정, 시뮬레이션을 종료하고 궤적 및 속도 데이터를 출력한다. 
+사용자는 시뮬레이션 시작 전 표적 및 Kill Vehicle의 초기 위치, 진행방향, 속력 등을 입력한다. 시뮬레이션 모듈은 입력받은 초기 파라미터를 기반으로 표적 궤적을 적분하며, Kill Vehicle은 생성된 표적 궤적을 기반으로 비례항법유도(Proportional Navigation Guidance)를 실시, 표적을 향해 기동한다. Kill Vehicle과 표적 간의 접근속도가 양수에서 음수로 변하면 표적이 격추되었다고 가정, 시뮬레이션을 종료하고 궤적 및 속도 데이터를 출력한다. 
 
 ---
 
@@ -28,7 +28,7 @@ code : MATLAB & python
 Kill Vehicle의 NED 속도, 동체 가속도, 자세각 및 PQR 변화율 적분을 위해 multistep method의 일종인 Adams-Bashforth method를 사용한다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}y_{n+1}=y_{n}+\Delta{t}\sum_{j=0}^{p}\gamma_j(\dot{y}_n-\dot{y}_{n-1}),~n\geq{p}\end{align*}" />
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}y_{n+1}=y_{n}+\Delta{t}\sum_{j=0}^{p}\gamma_j{(\dot{y}_n-\dot{y}_{n-1})},~n\geq{p}\end{align*}"/>
 
 여기서
 
@@ -93,7 +93,7 @@ Kill Vehicle의 NED 속도, 동체 가속도, 자세각 및 PQR 변화율 적분
 
 ![Kill Vehicle Graphics](https://user-images.githubusercontent.com/55905711/99368419-76827f00-28fe-11eb-9936-9bc703d17989.png)
 
-본 연구에서 고려하는 Kill Vehicle은 [RIM-161 Standard Missile 3](https://en.wikipedia.org/wiki/RIM-161_Standard_Missile_3)의 [Kill Vehicle](https://youtu.be/GGvlNufdeL8)과 유사한 형태를 가지고 있다고 가정한다. 동체 전면부에는 표적 포착을 위한 탐색기가 위치하며, 질량중심 주변에 4개의 추력기로 구성된 Divert Control System이, 동체 후면부에 6개의 추력기로 구성된 Attitude Control System이 부착된 형태이다.
+본 연구에서 고려하는 Kill Vehicle은 RIM-161 Standard Missile 3의 Kill Vehicle과 유사한 형태를 가지고 있다고 가정한다. 동체 전면부에는 표적 포착을 위한 탐색기가 위치하며, 질량중심 주변에 4개의 추력기로 구성된 Divert Control System이, 동체 후면부에 6개의 추력기로 구성된 Attitude Control System이 부착된 형태이다.
 
 ![Kill Vehicle Thrusters](https://user-images.githubusercontent.com/55905711/99400646-8adc7100-292a-11eb-82d2-eb7e8344d26e.png)
 
@@ -107,7 +107,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 상기한 Linear Equation 은 다음과 같은 형태로 정리할 수 있다.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}{b=Ax}\end{align*}"/> 
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}{b}{=}{Ax}\end{align*}"/> 
 
 여기서
 
@@ -133,7 +133,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}A^\dagger=A^T(AA^T)^{-1}\end{align*}"/>  
 
-행렬 *A* 가 [full rank](https://en.wikipedia.org/wiki/Rank_(linear_algebra))이고, [underdetermined](https://en.wikipedia.org/wiki/Underdetermined_system)한 형태이므로 *A* 의 [Moore-Penrose pseudoinverse matrix](https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse)는 위와 같다. Pseudoinverse matrix를 이용한 해는 DACS 추력기를 최소한으로 사용하도록 작동하지만, 물리적으로 구현이 불가능하다. 해당 해는 실수 전체의 범위를 가지는 반면, 현실의 추력기들은 한쪽 방향으로만 추력을 발생시킬 수 있으므로 추력값의 범위가 음이 아닌 값으로 제한되기 때문이다.
+행렬 *A* 가 full rank이고, underdetermined한 형태이므로 *A* 의 Moore-Penrose pseudoinverse matrix는 위와 같다. Pseudoinverse matrix를 이용한 해는 DACS 추력기를 최소한으로 사용하도록 작동하지만, 물리적으로 구현이 불가능하다. 해당 해는 실수 전체의 범위를 가지는 반면, 현실의 추력기들은 한쪽 방향으로만 추력을 발생시킬 수 있으므로 추력값의 범위가 음이 아닌 값으로 제한되기 때문이다.
 
 ---
 
@@ -142,7 +142,7 @@ Kill Vehicle에 작용하는 힘과 토크는 다음과 같다. 6개의 ACS 추�
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}&\underset{x}{\text{minimize}}&&{\lVert}Ax-b{\rVert}_2^2\\&\text{subject~to}&&x\geq0\end{align*}"/>
 
-기존 least norm problem 의 [cost function](https://en.wikipedia.org/wiki/Loss_function)을 다음과 같은 [least squared error](https://en.wikipedia.org/wiki/Mean_squared_error) 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent) 알고리즘을 고려하자. Gradient descent 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0으로 수렴하는 벡터 *x* 를 찾는 것이 목적이다.
+기존 least norm problem 의 cost function을 다음과 같은 least squared error 형태로 수정하는 한편, inequality constraint를 추가하였다. 이 문제의 해결을 위해 gradient descent 알고리즘을 고려하자. Gradient descent 는 cost function의 local minimum을 찾는 알고리즘으로, 매 step을 반복하며 cost function의 gradient가 0으로 수렴하는 벡터 *x* 를 찾는 것이 목적이다.
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}&x_{temp}=x_k-h_k\nabla_xf(x_k),\\&\text{if~}f(x_{temp})\leq{f(x_k)}\\&~~~~~~x_{k+1}=x_{temp},~h_{k+1}=1.2h_k\\&\text{else}\\&~~~~~~x_{k+1}=x_{k},~h_{k+1}=0.5h_k\\\end{align*}"/>
