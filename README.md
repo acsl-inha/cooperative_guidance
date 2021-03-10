@@ -86,6 +86,14 @@ Kill Vehicle의 NED 속도, 동체 가속도, 자세각 및 PQR 변화율 적분
 
 ### Kill Vehicle Kinematics and Dynamics
 
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?&space;\begin{align*}\begin{pmatrix}\dot{p_n}\\\dot{p_e}\\\dot{p_d}\end{pmatrix}&=\mathcal{C}_{N}^{B}\begin{pmatrix}u\\v\\w\end{pmatrix}\\\begin{pmatrix}\dot{u}\\\dot{v}\\\dot{w}\end{pmatrix}&=\begin{pmatrix}rv-qw\\pw-ru\\qu-pu\end{pmatrix}+\frac{1}{m}\begin{pmatrix}{f_x}\\{f_y}\\{f_z}\end{pmatrix}\end{align*}"/> 
+
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\begin{pmatrix}1& s_{\phi}t_{\theta}&c_{\phi}t_{\theta}\\0&c_{\phi}&-s_{\phi}\\0&\frac{s_{\phi}}{c_{\theta}}& \frac{c_{\phi}}{c_{\theta}}\end{pmatrix}" />
+
+
 ---
 
 
